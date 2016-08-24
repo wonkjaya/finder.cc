@@ -17,7 +17,7 @@
       <div class="container">
          <div class="navbar-header">
           <img src="<?=base_url('assets/css/img/logo.png')?>" class="navbar-left">
-          <a class="navbar-brand" href="index.php">P-Finder</a>
+          <a class="navbar-brand" href="<?=site_url()?>">P-Finder</a>
          </div>
 		<?php
 		if(isset($loggedin)){

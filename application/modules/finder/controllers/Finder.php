@@ -35,7 +35,8 @@ class Finder extends CI_Controller{
 	// START LOGIN
 	
 	function login(){
-		$this->load->view('login');
+		$this->m->do_login();
+		$this->load->view('administration/login');
 	}
 	
 	function do_login(){
