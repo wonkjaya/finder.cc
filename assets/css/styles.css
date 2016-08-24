@@ -1,0 +1,45 @@
+@import url("bootstrap.min.css");
+
+
+*{
+	margin:0;
+	padding:0;
+}
+
+.clear-top{
+	clear:both;
+	height:100px;
+}
+a:hover{text-decoration: none;}
+.result-p{
+	padding-top: 5px;
+	padding-bottom: 10px;
+}
+p#res-url{
+	font-size: 11px;
+	margin-top:-10px;
+	color:#003080;
+}
+#minimized-menu{
+	width:30px;
+	font-size:22px;
+	padding:0px 10px;
+}
+span#submit{
+	background:#4285f4;
+	color:#fff;
+}
+#link-login{
+	color:#4285f4;
+}
+
+.form-control.form-daftar.input{
+	width:300px;
+}
+a{text-decoration: none}
+#body-ketentuan{
+	padding-left: 30px;
+}
+#alert-daftar{
+	padding:6px;
+}
