@@ -20,7 +20,14 @@
 			  <!--span class="info input-group-addon btn visible-xs" style="background:#6C1BD8;color:#fff;width: 50px;" id="submit">Go</span-->
 			  <input type="text" class="form-control" autocomplete="off" placeholder="Cari Info Pedagang atau Jasa Sekarang" style="font-size:11px" id="q" onkeyup="tekan_tombol();">
 			  <span class="info input-group-addon btn " id="submit">Go</span>
-			  <span class="input-group-btn glyphicon" id="minimized-menu"><div class="visible-xs glyphicon glyphicon-menu-hamburger"></div></span>
+			  <span class="input-group-btn glyphicon" id="minimized-menu">
+			  	<div class="visible-xs glyphicon glyphicon-menu-hamburger">
+			  		<ul class="dropdown-menu" role="menu">
+				      <li><a href="#">Dropdown link</a></li>
+				      <li><a href="#">Dropdown link</a></li>
+				    </ul>
+			  	</div>
+			  </span>
 		  </div>
          </div>
 		<?php
