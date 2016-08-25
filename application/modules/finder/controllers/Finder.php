@@ -14,6 +14,7 @@ class Finder extends CI_Controller{
 	
 	function finder(){
 		$this->load->view('homepage');
+		$this->load->view('includes/modal_login');
 	}
 	
 	//START REGISTER
@@ -21,6 +22,7 @@ class Finder extends CI_Controller{
 	function register(){
 		$this->m->register();
 		$this->load->view('administration/register');
+		$this->load->view('includes/modal_login');
 	}
 	
 	function register_success(){ echo $this->session->flashdata('success');
@@ -37,6 +39,7 @@ class Finder extends CI_Controller{
 	function login(){
 		$this->m->do_login();
 		$this->load->view('administration/login');
+		$this->load->view('includes/modal_login');
 	}
 	
 	function do_login(){

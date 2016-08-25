@@ -61,11 +61,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 $active_group = 'default';
 $query_builder = TRUE;
-//print_r($_SERVER['HTTP_HOST']);
-$username='rohmanah_pfinder';
-$password='silviaputrinanda123';
-$dbs='rohmanah_pfinder_cc';
-
+if($_SERVER['HTTP_HOST'] == 'pfinder.malangsoftware.com'){
+	$username='rohmanah_pfinder';
+	$password='silviaputrinanda123';
+	$dbs='rohmanah_pfinder_cc';
+}else{
+	$username='root';
+	$password='iTAYWGnJ';
+	$dbs='pfinder_cc';
+}
 
 $db['default'] = array(
 	'dsn'	=> '',

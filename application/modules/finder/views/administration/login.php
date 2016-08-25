@@ -14,45 +14,60 @@
 
 <body>
     <!-- Fixed navbar -->
-    <nav class="navbar navbar-default navbar-fixed-top" style="padding-top:10px">
-      <div class="container">
-         <div class="navbar-header">
-          <img src="<?=base_url('assets/css/img/logo.png')?>" class="navbar-left">
+    <nav class="navbar navbar-default">
+	  <div class="container-fluid">
+	    <!-- Brand and toggle get grouped for better mobile display -->
+	    
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+	      	<span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+          <img src="<?=base_url('assets/css/img/logo.png')?>" class="navbar-brand visible-xs">
           <a class="navbar-brand" href="<?=site_url()?>">P-Finder</a>
-         </div>
-					<?php
-					if(isset($loggedin)){
-					?>		  
-					<div class="btn-group navbar-right" role="group" aria-label="...">
-						<a href="#label" class="btn btn-default btn-lg">1</a>
-						<a href="#label" class="btn btn-default btn-lg">2</a>
+          <!--div class="input-group input-group-lg" style="max-width:400px">
+			  <!--span class="info input-group-addon btn visible-xs" style="background:#6C1BD8;color:#fff;width: 50px;" id="submit">Go</span-->
+			  <!--input type="text" class="form-control" autocomplete="off" placeholder="Cari Info Pedagang atau Jasa Sekarang" style="font-size:11px" id="q" onkeyup="tekan_tombol();">
+			  <span class="info input-group-addon btn " id="submit">Go</span>
+			  <span class="input-group-btn glyphicon" id="minimized-menu"></span>
+		  </div-->
+        </div>
 
-						<div class="btn-group" role="group">
-							<button type="button" class="btn btn-default dropdown-toggle btn-lg" data-toggle="dropdown" aria-expanded="false">
-								Dropdown
-								<span class="caret"></span>
-							</button>
-							<ul class="dropdown-menu" role="menu">
-								<li><a href="#">Dropdown link</a></li>
-								<li><a href="#">Dropdown link</a></li>
-							</ul>
-						</div>
-					</div>		  
-					<?php
-					}else{
-					?>
-					<ul class="nav navbar-nav navbar-right hidden-xs">
-						<li><a href="<?=site_url('finder/register')?>" >Daftar</a></li>
-						<li><a href="#" id="link-login" data-toggle='modal' data-target='.modal-login'>Login</a></li>
-					</ul>
-
-					<?php
-					}
-					//echo $url;
-					?>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+	    <!-- Collect the nav links, forms, and other content for toggling -->
+	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	      <?php
+			if(isset($loggedin)){
+			?>
+			<ul class="nav navbar-nav navbar-right">
+		        <li><a href="#">Link</a></li>
+		        <li class="dropdown">
+		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+		          	<span class="glyphicon glyphicon-th"></span> <?=$username?> <span class="caret"></span>
+		          </a>
+		          <ul class="dropdown-menu" role="menu">
+		            <li><a href="#">Profil Saya</a></li>
+		            <li><a href="#">Aktivitas Saya</a></li>
+		            <li class="divider"></li>
+		            <li><a href="<?=site_url('logout')?>">Logout</a></li>
+		          </ul>
+		        </li>
+		    </ul>
+		    <?php
+			}else{
+		    ?>
+		    <ul class="nav navbar-nav navbar-right">
+		        <li><a href="<?=site_url('finder/register')?>" >Daftar</a></li>
+				<li><a href="#" id="link-login" data-toggle='modal' data-target='.modal-login'>Login</a></li>
+		    </ul>
+		    <?php
+			}
+		    ?>
+			
+	    </div><!-- /.navbar-collapse -->
+	  </div><!-- /.container-fluid -->
+	</nav>
 <!---END OF HEADER-->
     <!-- Begin page content -->
     <!--div class="clear-top"></div>
