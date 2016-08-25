@@ -69,8 +69,8 @@
 		  </div>
 		</div>
 <?php
- $this->load->view('includes/ketentuan.php');
- $this->load->view('includes/modal.login.php');
+ //$this->load->view('includes/ketentuan.php');
+ //$this->load->view('includes/modal.login.php');
 ?>
 <script src="<?=base_url('assets/js/jquery.min.js')?>"></script>
 <script src="<?=base_url('assets/js/bootstrap.js')?>"></script>
