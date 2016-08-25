@@ -61,7 +61,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 $active_group = 'default';
 $query_builder = TRUE;
-if($_SERVER['HTTP_HOST'] == 'pfinder.malangsoftware.com'){
+//echo $_SERVER['HTTP_HOST'];
+if($_SERVER['HTTP_HOST'] == 'finder.malangsoftware.com'){
 	$username='rohmanah_pfinder';
 	$password='silviaputrinanda123';
 	$dbs='rohmanah_pfinder_cc';
