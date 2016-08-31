@@ -28,6 +28,11 @@ class Admin extends CI_Controller{
 		$this->load->view('form_produkJasa',$data);
 	}
 	
+	function list_lokasi(){
+		$data['lokasi']=$this->m->get_lokasi();
+		$this->load->view('objekLokasi');
+	}
+	
 	
 }
 

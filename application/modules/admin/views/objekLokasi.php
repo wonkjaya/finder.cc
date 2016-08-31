@@ -9,7 +9,7 @@
 	<body class="container">
 		<div class="row">
 			<?php 
-				$header=array('menu_aktif'=>2);
+				$header=array('menu_aktif'=>3);
 				include('template/header.php'); 
 			?>
 		</div>
@@ -25,21 +25,22 @@
 					</tr>
 					<?php
 					$no=1;
-					if($dagangan !== ''){
-						foreach($dagangan as $r){
+					if($lokasi !== ''){
+						foreach($lokasi as $r){
 							$id=$r->ID;
-							$judul=$r->judul;
-							$kategori=$r->kategori;
+							$nama_toko=$r->nama;
+							$alamat=$r->alamat;
+							$kota=$r->kota;
 							$pedagang=$r->pedagang;				
 					?>
 					<tr>
 						<td><?=$no?></td>
-						<td><?=$judul?></td>
-						<td><?=$kategori?></td>
+						<td><?=$nama_toko?></td>
+						<td><?=$alamat?></td>
+						<td><?=$kota?></td>
 						<td><?=$pedagang?></td>
 						<td>
 							<?=anchor('admin/edit_produkJasa/'.$id.'/prefered_content','Edit','class="btn btn-primary btn-xs"')?>
-							<?=anchor('admin/detail_produkJasa/'.$id.'/prefered_content','Detail','class="btn btn-default btn-xs"')?>
 						</td>
 					</tr>
 					<?php

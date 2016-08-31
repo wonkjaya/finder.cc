@@ -20,6 +20,15 @@
         <li class="<?=($header['menu_aktif']==2)?'active':'';?>">
         	<a href="<?=site_url('admin/dagangan')?>"><i class="glyphicon glyphicon-shopping-cart"></i> Produk & Jasa</a>
         </li>
+        <li class="dropdown <?=($header['menu_aktif']==3)?'active':'';?>">
+        	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+        		<i class="glyphicon glyphicon-map-marker"></i> Tempat <span class="caret"></span>
+        	</a>
+        	<ul class="dropdown-menu">
+            <li><a href="<?=site_url('admin/list_lokasi')?>">Daftar Lokasi</a></li>
+            <li><a href="<?=site_url('admin/new_lokasi')?>">New Lokasi</a></li>
+          </ul>
+        </li>
       </ul>
       <!--form class="navbar-form navbar-left" role="search">
         <div class="form-group">
