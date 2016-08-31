@@ -75,7 +75,7 @@
 	    <?php
 	    if(!isset($sukses)){
 	    ?>
-		    	<div class="col-md-6" style="padding-top: 100px;" id="result">
+		    	<div class="col-md-6" style="padding-top: 30px;" id="result">
 		    		<h1>Pendaftaran Baru</h1><br>
 					<form class="form-horizontal" method="POST">
 					  <div class="form-group">

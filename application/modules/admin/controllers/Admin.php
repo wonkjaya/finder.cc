@@ -16,6 +16,18 @@ class Admin extends CI_Controller{
 		$this->load->view('dashboard');
 	}
 	
+	function dagangan(){
+		$data['dagangan']=$this->m->get_dagangan();
+		$this->load->view('produkJasa',$data);
+	}
+	
+	function new_post(){
+		$this->m->save_post();
+		$this->load->helper('form');
+		$data['kategori']=$this->m->load_kategori();
+		$this->load->view('form_produkJasa',$data);
+	}
+	
 	
 }
 
