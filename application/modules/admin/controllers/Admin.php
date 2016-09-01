@@ -24,13 +24,20 @@ class Admin extends CI_Controller{
 	function new_post(){
 		$this->m->save_post();
 		$this->load->helper('form');
+		$data['lokasi']=$this->m->get_lokasi(); 
 		$data['kategori']=$this->m->load_kategori();
 		$this->load->view('form_produkJasa',$data);
 	}
 	
 	function list_lokasi(){
 		$data['lokasi']=$this->m->get_lokasi();
-		$this->load->view('objekLokasi');
+		$this->load->view('objekLokasi',$data);
+	}
+
+	function new_lokasi(){
+		$this->m->save_lokasi();
+		$this->load->helper('form');
+		$this->load->view('form_lokasi');
 	}
 	
 	

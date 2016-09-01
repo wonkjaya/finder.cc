@@ -24,8 +24,15 @@
 							<input type="text" name="nama" class="form-control" placeholder="Masukkan Nama Produk / Jasa">
 						</div>
 						<div class="form-group">
-							<label for="">Alamat</label>
-							<input type="text" name="alamat" class="form-control" placeholder="Alamat" value=""/>
+							<label for="">Lokasi</label>
+							<?php
+								if($lokasi != false){
+									foreach($lokasi as $r){
+										$listLokasi[$r->ID]=ucwords($r->nama);
+									}
+								}
+								echo form_dropdown('idTempat',$listLokasi,'','class="form-control"')
+							?>
 						</div>
 						<!--div class="form-group">
 							<label for="">Kota</label>
@@ -45,7 +52,7 @@
 						</div>
 						<div class="form-group">
 							<label for="">Deskripsi</label>
-							<textarea name="deskripsi" class="form-control" placeholder="Deskripsi"></textarea>
+							<textarea name="deskripsi" class="form-control" placeholder="Deskripsi" style="resize:vertical"></textarea>
 						</div>
 						<div class="form-group">
 							<label for="exampleInputFile">Foto Tempat</label>

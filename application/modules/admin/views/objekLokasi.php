@@ -18,29 +18,33 @@
 				<table class="table table-bordered">
 					<tr>
 						<th>#</th>
-						<th>Judul</th>
-						<th>Kategori</th>
-						<th>Pedagang</th>
+						<th>Nama</th>
+						<th>Alamat</th>
+						<th>kota</th>
 						<th>***</th>
 					</tr>
 					<?php
 					$no=1;
-					if($lokasi !== ''){
+					if($lokasi !== false){
 						foreach($lokasi as $r){
 							$id=$r->ID;
 							$nama_toko=$r->nama;
 							$alamat=$r->alamat;
 							$kota=$r->kota;
-							$pedagang=$r->pedagang;				
+							$status=$r->status;				
 					?>
 					<tr>
 						<td><?=$no?></td>
 						<td><?=$nama_toko?></td>
 						<td><?=$alamat?></td>
 						<td><?=$kota?></td>
-						<td><?=$pedagang?></td>
 						<td>
-							<?=anchor('admin/edit_produkJasa/'.$id.'/prefered_content','Edit','class="btn btn-primary btn-xs"')?>
+							<?=anchor('admin/edit_lokasi/'.$id.'/prefered_content','
+								<i class="visible-xs glyphicon glyphicon-pencil"></i><span class="hidden-xs">Edit</span>',
+								'class="btn btn-primary btn-xs"')?>
+							<?=anchor('admin/detail_lokasi/'.$id.'/prefered_content',
+								'<i class="visible-xs glyphicon glyphicon-eye-open"></i><span class="hidden-xs">Detail</span>',
+								'class="btn btn-default btn-xs"')?>
 						</td>
 					</tr>
 					<?php

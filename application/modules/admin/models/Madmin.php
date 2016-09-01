@@ -25,7 +25,7 @@ class Madmin extends CI_Model{
 		if($_POST){
 		//print_r($_SESSION);//exit;
 			$data['judul']=$this->input->post('nama');
-			$data['alamat']=$this->input->post('alamat');
+			$data['id_lokasi']=$this->input->post('idTempat');
 			$data['id_pedagang']=$this->get_pedagang_id();
 			$data['id_kategori']=$this->input->post('kategori');
 			$data['deskripsi']=$this->input->post('deskripsi');
@@ -45,9 +45,9 @@ class Madmin extends CI_Model{
         //echo '# upload_gambar'.br();
 				$config['upload_path']          = FCPATH.'/uploads/lokasi-images/';
         $config['allowed_types']        = 'jpg';
-        $config['max_size']             = 100; ///100kB
-        $config['max_width']            = 1024; //1024px
-        $config['max_height']           = 768; //768px
+        $config['max_size']             = 2000; ///100kB
+        //$config['max_width']            = 2000; //1024px
+        //$config['max_height']           = 768; //768px
         $config['overwrite']			= true;
 
         $imagename=array('foto');
@@ -92,6 +92,25 @@ class Madmin extends CI_Model{
 			return $q->result();
 		}else{
 			return false;
+		}
+	}
+
+	function get_lokasi(){
+		$this->db->where('id_pedagang',$this->get_pedagang_id());
+		$q=$this->db->get('objekLokasi');
+		if($q->num_rows() > 0)return $q->result();
+		return false;
+	}
+
+	function save_lokasi(){
+		if($_POST){
+			//print_r($_POST);
+			$data['id_pedagang']=$this->get_pedagang_id();
+			$data['nama']=$this->input->post('lokasiNama');
+			$data['alamat']=$this->input->post('lokasiAlamat');
+			$data['kota']=$this->input->post('lokasiKota');
+			$this->db->insert('objekLokasi',$data);
+			redirect('admin/new_lokasi');
 		}
 	}
 	

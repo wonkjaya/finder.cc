@@ -25,7 +25,7 @@
 					</tr>
 					<?php
 					$no=1;
-					if($dagangan !== ''){
+					if($dagangan !== false){
 						foreach($dagangan as $r){
 							$id=$r->ID;
 							$judul=$r->judul;
@@ -38,8 +38,13 @@
 						<td><?=$kategori?></td>
 						<td><?=$pedagang?></td>
 						<td>
-							<?=anchor('admin/edit_produkJasa/'.$id.'/prefered_content','Edit','class="btn btn-primary btn-xs"')?>
-							<?=anchor('admin/detail_produkJasa/'.$id.'/prefered_content','Detail','class="btn btn-default btn-xs"')?>
+							<?=anchor('admin/edit_produkJasa/'.$id.'/prefered_content',
+								'<i class="visible-xs glyphicon glyphicon-pencil"></i><span class="hidden-xs">Edit</span>',
+								'class="btn btn-primary btn-xs"')?>
+
+							<?=anchor('admin/detail_produkJasa/'.$id.'/prefered_content',
+								'<i class="visible-xs glyphicon glyphicon-eye-open"></i><span class="hidden-xs">Detail</span>',
+								'class="btn btn-default btn-xs"')?>
 						</td>
 					</tr>
 					<?php
