@@ -114,6 +114,31 @@ class Madmin extends CI_Model{
 		}
 	}
 	
+	function get_detailProdukJasa($id){
+		if($id > 0){
+			$this->db->where(['p.id_pedagang'=>$this->get_pedagang_id(),'p.ID'=>$id]);
+			$this->db->select('p.*,k.nama as kategori,l.nama as lokasi,l.alamat as alamat');
+			$this->db->join('kategori k','k.ID=p.id_kategori','left');
+			$this->db->join('objekLokasi l','l.ID=p.id_lokasi','left');
+			$q=$this->db->get('produk_jasa p');
+			if(isset($q->row()->ID)){
+				return $q->result();
+			}
+		}
+	}
+	
+	function get_detailLokasi($id){
+		if($id > 0){
+			$this->db->where(['l.id_pedagang'=>$this->get_pedagang_id(),'l.ID'=>$id]);
+			$this->db->select(['l.*','k.key_kontak','k.value']);
+			$this->db->join('kontak_list k','k.id_lokasi=l.ID','left');
+			$q=$this->db->get('objekLokasi l');
+			if(isset($q->row()->ID)){
+				return $q->result();
+			}
+		}
+	}
+	
 
 }
 //end of file

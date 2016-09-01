@@ -21,6 +21,11 @@ class Admin extends CI_Controller{
 		$this->load->view('produkJasa',$data);
 	}
 	
+	function detail_produkJasa($id){
+		$data['detail_produkJasa']=$this->m->get_detailProdukJasa($id);
+		$this->load->view('detail_ProdukJasa',$data);
+	}
+	
 	function new_post(){
 		$this->m->save_post();
 		$this->load->helper('form');
@@ -32,6 +37,11 @@ class Admin extends CI_Controller{
 	function list_lokasi(){
 		$data['lokasi']=$this->m->get_lokasi();
 		$this->load->view('objekLokasi',$data);
+	}
+	
+	function detail_lokasi($id){
+		$data['detail_lokasi']=$this->m->get_detailLokasi($id);
+		$this->load->view('detail_lokasi',$data);
 	}
 
 	function new_lokasi(){
