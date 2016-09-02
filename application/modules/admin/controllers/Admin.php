@@ -16,6 +16,8 @@ class Admin extends CI_Controller{
 		$this->load->view('dashboard');
 	}
 	
+//produk
+	
 	function dagangan(){
 		$data['dagangan']=$this->m->get_dagangan();
 		$this->load->view('produkJasa',$data);
@@ -27,13 +29,24 @@ class Admin extends CI_Controller{
 	}
 	
 	function new_post(){
-		$this->m->save_post();
+		$this->m->save_post(''); // insert new
 		$this->load->helper('form');
 		$data['lokasi']=$this->m->get_lokasi(); 
 		$data['kategori']=$this->m->load_kategori();
 		$this->load->view('form_produkJasa',$data);
 	}
 	
+	function edit_produkJasa($idPost){
+		$this->m->save_post($idPost); // update
+		$this->load->helper('form');
+		$data['post']=$this->m->getOnePost($idPost);
+		$data['lokasi']=$this->m->get_lokasi(); 
+		$data['kategori']=$this->m->load_kategori();
+		$this->load->view('form_produkJasa',$data);
+	}
+
+// lokasi
+
 	function list_lokasi(){
 		$data['lokasi']=$this->m->get_lokasi();
 		$this->load->view('objekLokasi',$data);

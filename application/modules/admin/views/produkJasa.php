@@ -13,6 +13,14 @@
 				include('template/header.php'); 
 			?>
 		</div>
+		<?php
+			if(!empty($this->session->flashdata('success'))){
+		?>
+			<div class="alert alert-success"><?=$this->session->flashdata('success')?></div>
+		<?php
+		// sukses
+			}
+		?>
 		<div class="row">
 			<div class="panel panel-default col-md-8">
 				<table class="table table-bordered">

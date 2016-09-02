@@ -21,26 +21,38 @@ class Madmin extends CI_Model{
 		return isset($q->row()->ID)?$q->row()->ID:0;
 	}
 	
-	function save_post(){
+	function save_post($id){
 		if($_POST){
 		//print_r($_SESSION);//exit;
 			$data['judul']=$this->input->post('nama');
 			$data['id_lokasi']=$this->input->post('idTempat');
+			$data['type']=$this->input->post('jenis');
 			$data['id_pedagang']=$this->get_pedagang_id();
 			$data['id_kategori']=$this->input->post('kategori');
 			$data['deskripsi']=$this->input->post('deskripsi');
-			$data['foto']=$this->upload_gambar();
+			$foto=$this->upload_gambar();
+			if(!empty($foto)) $data['foto']=$foto;
 			// cek kekosongan field
 			if(empty($data['nama']))$error[]='Nama Harus Diisi';
 			if(empty($data['alamat']))$error[]='Alamat Harus Diisi';
 			if(empty($data['deskripsi']))$error[]='Deskripsi Harus Diisi';
-			// proses insert
-			$this->db->insert('produk_jasa',$data);
+			
+			if($id > 0){
+				$this->db->where(['ID'=>$id,'id_pedagang'=>$this->get_pedagang_id()]);
+				$this->db->update('produk_jasa',$data);
+				$this->session->flashdata('success','data berhasil diubah');
+			}else{
+				// proses insert
+				$this->db->insert('produk_jasa',$data);
+				$this->session->flashdata('success','data berhasil ditambahkan');
+			}
+			redirect('admin/dagangan');
 		}
 	}
 
 	function upload_gambar($images=''){
         //unset($config);
+        if($_FILES['foto']['tmp_name'])return '';
         $config=array();
         //echo '# upload_gambar'.br();
 				$config['upload_path']          = FCPATH.'/uploads/lokasi-images/';
@@ -139,6 +151,12 @@ class Madmin extends CI_Model{
 		}
 	}
 	
+	function getOnePost($idPost){
+		$this->db->where(['ID'=>$idPost,'id_pedagang'=>$this->get_pedagang_id()]);
+		$q=$this->db->get('produk_jasa');
+		if($q->num_rows() > 0)return $q->result();
+		return false;
+	}
 
 }
 //end of file

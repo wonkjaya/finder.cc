@@ -54,6 +54,18 @@
 					</p>
 				</div><!--end panel-body-->
 			</div><!--end panel-default-->
+			<!--Panel Kontak-->
+			<div class="panel panel-default col-md-3 col-md-offset-1">
+				<div class="panel-body" style="text-align:justify">
+					<p>
+						<label>Daftar Kontak</label>
+						<div class="input-group">
+							<input class="form-control" id="kontak" style=""/>
+							<span class="input-group-addon btn btn-primary" id="add_kontak">Add</span>
+						</div>
+					</p>
+				</div><!--end panel-body-->
+			</div><!--end panel-default-->
 		</div><!--end row body-->
 		<?php include('template/footer.php')?>
 		
