@@ -107,7 +107,7 @@
 
 	function search_res($q){
 		$.ajax({
-			url		: "search.php",
+			url		: "<?=site_url('search')?>", // lihat routing.php
 			method	: 'GET',
 			data	: {
 						q 	: $q

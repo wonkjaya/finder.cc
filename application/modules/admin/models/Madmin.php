@@ -50,18 +50,23 @@ class Madmin extends CI_Model{
 		}
 	}
 
-	function upload_gambar($images=''){
+	function upload_gambar($data=''){
         //unset($config);
-        if($_FILES['foto']['tmp_name'])return '';
+        //print_r($_FILES);
+        $inputName=isset($data['inputName'])?$data['inputName']:'foto';
+        //echo $_FILES[$inputName]['tmp_name'];
+        if(!isset($_FILES[$inputName]['tmp_name']))return '';
         $config=array();
         //echo '# upload_gambar'.br();
-				$config['upload_path']          = FCPATH.'/uploads/lokasi-images/';
-        $config['allowed_types']        = 'jpg';
-        $config['max_size']             = 2000; ///100kB
+        $uploadPath=(isset($data['path']))?$data['path']:'produk-images/';
+				$config['upload_path']          = FCPATH.'uploads/'.$uploadPath;
+        $config['allowed_types']        = (isset($data['allowedType']))?$data['allowedType']:'jpg';
+        $config['max_size']             = (isset($data['maxSize']))?$data['maxSize']:2000; ///100kB
         //$config['max_width']            = 2000; //1024px
         //$config['max_height']           = 768; //768px
         $config['overwrite']			= true;
 
+//print_r($config);
         $imagename=array('foto');
         //$time=date('ymdgis');
         $files=array();
@@ -69,16 +74,16 @@ class Madmin extends CI_Model{
         $i=1;
        // print_r($images);
         foreach($imagename as $image){
-        	$config['file_name']=isset($images[$image])?$images[$image]:$image.'-'.$time;
+        	$config['file_name']=$image.'-'.$time;
         	$config['reset']=true;
         	$this->load->library('upload');
         	$this->upload->initialize($config);
 
-        	if($_FILES[$image]['tmp_name'] != ''):
-		        if ( ! $this->upload->do_upload($image)) // gambar berbentuk array
+        	if($_FILES[$inputName]['tmp_name'] != ''):
+		        if ( ! $this->upload->do_upload($inputName)) // gambar berbentuk array
 		        {
 		            //$error = array('error' => $this->upload->display_errors());
-		            die($image .' : '.$this->upload->display_errors());
+		            die($inputName .' : '.$this->upload->display_errors());
 		        }else{
 		        	$data=$this->upload->data();
 		        	array_push($files, $data['file_name']);
@@ -89,7 +94,6 @@ class Madmin extends CI_Model{
 		    endif;
 		    $i++;
         }
-        //print_r($files);exit;
         $config=null;
         return isset($files[0])?$files[0]:'';
 	}
@@ -121,8 +125,15 @@ class Madmin extends CI_Model{
 			$data['nama']=$this->input->post('lokasiNama');
 			$data['alamat']=$this->input->post('lokasiAlamat');
 			$data['kota']=$this->input->post('lokasiKota');
-			$this->db->insert('objekLokasi',$data);
-			redirect('admin/new_lokasi');
+			$data['deskripsi']=$this->input->post('lokasiDeskripsi');
+			
+			$dataUpload=['inputName'=>'fotoLokasi','path'=>'lokasi-images/','allowedType'=>'jpg|png'];
+			$foto=$this->upload_gambar($dataUpload);
+			if(!empty($foto)) $data['foto']=$foto;
+			if($this->db->insert('objekLokasi',$data)){
+				$this->session->set_flashdata('success','Data Berhasil Dimasukkan');
+				redirect('admin/new_lokasi');
+			}
 		}
 	}
 	

@@ -52,6 +52,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 $route['default_controller'] = 'finder';
 $route['register_success'] = 'finder/register_success';
+$route['search'] = 'finder/doSearch';
 
 
 // main controller

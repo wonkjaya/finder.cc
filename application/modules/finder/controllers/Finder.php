@@ -48,6 +48,11 @@ class Finder extends CI_Controller{
 	
 	// END LOGIN
 
+	// SEARCH METHOD
+	function doSearch(){
+		$this->m->doSearch();
+	}
+
 }
 
 //end of file

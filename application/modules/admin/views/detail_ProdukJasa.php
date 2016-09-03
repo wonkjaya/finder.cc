@@ -22,8 +22,8 @@
 						$kategori=$r->kategori;
 						$lokasi=$r->lokasi;
 						$deskripsi=$r->deskripsi;
-						$foto_path=FCPATH.'uploads/lokasi-images/'.$r->foto;
-						$foto=base_url('uploads/lokasi-images/'.$r->foto);
+						$foto_path=FCPATH.'uploads/produk-images/'.$r->foto;
+						$foto=base_url('uploads/produk-images/'.$r->foto);
 						$foto=(file_exists($foto_path)?$foto:base_url('assets/images/noimage.png'));
 						$alamat=$r->alamat;
 					}

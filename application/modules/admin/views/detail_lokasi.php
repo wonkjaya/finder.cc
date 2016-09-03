@@ -24,6 +24,7 @@
 						$alamat=$r->alamat;
 						$kota=$r->kota;
 						$deskripsi=$r->deskripsi;
+						$foto=!empty($r->foto)?'lokasi-images/'.$r->foto:'no-image.png';
 					 }
 					 $n++;
 					}
@@ -33,6 +34,11 @@
 						<td class="col-md-9">
 							<label>Nama</label>
 							<p><?=$nama?></p>
+						</td>
+						<td rowspan="2">
+							<div class="img img-rounded">
+								<img src="<?=base_url('uploads/'.$foto)?>" width="250px"/>
+							</div>
 						</td>
 					</tr>
 					<tr>
@@ -48,13 +54,13 @@
 						</td>
 					</tr>
 					<tr>
-						<td>
+						<td colspan=2>
 							<label>Deskripsi</label>
 							<p><?=$deskripsi?></p>
 						</td>
 					</tr>
 					<tr>
-						<td colspan=2>
+						<td>
 							<br>
 							<a href="#" class="btn btn-warning" onclick="history.back()"><i class="glyphicon glyphicon-arrow-left"></i> Kembali</a>
 							<?=anchor('admin/edit_produkJasa/'.$id.'/prefered_content','Edit','class="btn btn-default"')?>

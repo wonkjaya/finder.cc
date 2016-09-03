@@ -43,3 +43,15 @@ a{text-decoration: none}
 #alert-daftar{
 	padding:6px;
 }
+.fileUpload{
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 0;
+	padding: 0;
+	font-size: 20px;
+	cursor: pointer;
+	opacity: 0;
+	filter: alpha(opacity=0);
+	padding: 110px 5px;
+}

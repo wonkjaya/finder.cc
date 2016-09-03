@@ -46,6 +46,25 @@ class Mfinder extends CI_Model{
 		}
 	}
 	
+	function doSearch(){
+		if(isset($_GET['q'])){
+			$keywords=$this->db->escape($_GET['q']);
+			$sql="SELECT pj.ID,pj.judul,o.alamat,pj.deskripsi FROM produk_jasa pj 
+								LEFT JOIN objekLokasi o ON o.ID=pj.id_lokasi
+								WHERE 1  
+										LIMIT 10";
+			$q=$this->db->query($sql);
+			foreach($q->result() as $r){
+				$data['id']=$r->ID;
+				$data['judul']=$r->judul;
+				$data['alamat']=$r->alamat;
+				$data['deskripsi']=$r->deskripsi;
+			}
+			
+			echo json_encode($data);
+		}
+	}
+	
 
 }
 //end of file
