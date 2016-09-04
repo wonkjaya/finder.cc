@@ -168,6 +168,18 @@ class Madmin extends CI_Model{
 		if($q->num_rows() > 0)return $q->result();
 		return false;
 	}
+	
+	function hapus_lokasi($id){
+		$this->db->where(['ID'=>$id,'id_pedagang'=>$this->get_pedagang_id()]);
+		$this->db->delete('objekLokasi');
+		redirect('admin/list_lokasi');
+	}
+	
+	function hapus_produkJasa($id){
+		$this->db->where(['ID'=>$id,'id_pedagang'=>$this->get_pedagang_id()]);
+		$this->db->delete('produk_jasa');
+		redirect('admin/dagangan');
+	}
 
 }
 //end of file

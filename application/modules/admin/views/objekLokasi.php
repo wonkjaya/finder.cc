@@ -45,6 +45,9 @@
 							<?=anchor('admin/detail_lokasi/'.$id.'/prefered_content',
 								'<i class="visible-xs glyphicon glyphicon-eye-open"></i><span class="hidden-xs">Detail</span>',
 								'class="btn btn-default btn-xs"')?>
+							<?=anchor('admin/hapus_lokasi/'.$id.'/prefered_content',
+								'<i class="visible-xs glyphicon glyphicon-trash"></i><span class="hidden-xs">Hapus</span>',
+								'class="btn btn-danger btn-xs"')?>
 						</td>
 					</tr>
 					<?php

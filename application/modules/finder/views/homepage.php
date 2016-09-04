@@ -68,7 +68,7 @@
 	</nav>
 <!---END OF HEADER-->
     <!-- Begin page content -->
-    <div class="clear-top"></div>
+    <!--div class="clear-top"></div-->
     <hr/>
     <div class="container">
 	    <div class="row">
@@ -99,10 +99,10 @@
 	});
 
 	function tekan_tombol(){
-		var q=$("#q").val()
+		/*var q=$("#q").val()
 		if(q !== ""){
 			search_res(q)
-		}
+		}*/
 	}
 
 	function search_res($q){
@@ -113,9 +113,30 @@
 						q 	: $q
 			}
 		}).done(function(msg){
-			$("#result").html(msg)
-			add_url('?q=' + $q )
+			//console.log(msg);
+			add_url('?q=' + $q );
+			//$("#result").html(msg);
+			tampilkanHasil(msg);
 		});
+	}
+	
+	function tampilkanHasil(msg){
+		//console.log(msg);
+		$("#result").html('');
+			var data=JSON.parse(msg);
+			//console.log(data);
+			for(var i=0; i <= data.length; i++){
+				html='<div class="result-p">\
+	      <a href="<?=site_url("finder/result/'+ data[i].id +'/'+ data[i].judul +'")?>">'+
+	      	'<h4 class="">'+ data[i].judul +'</h4>\
+	      </a>\
+	      	<p id="res-url">'+ "<?=site_url('finder/result/" + data[i].id +"/"+ data[i].judul +"')?>" +'</p>\
+	      <p class="">\
+	      <b>Alamat : </b>'+ data[i].alamat +'.<br> <b>Keterangan :</b> ' + data[i].deskripsi +'\
+	      </p>\
+	    </div>';
+				$("#result").append(html);
+			};
 	}
 
 	function add_url($url){

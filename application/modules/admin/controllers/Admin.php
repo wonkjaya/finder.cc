@@ -44,6 +44,10 @@ class Admin extends CI_Controller{
 		$data['kategori']=$this->m->load_kategori();
 		$this->load->view('form_produkJasa',$data);
 	}
+	
+	function hapus_proudkJasa($id){
+		$this->m->hapus_produkJasa($id);
+	}
 
 // lokasi
 
@@ -61,6 +65,10 @@ class Admin extends CI_Controller{
 		$this->m->save_lokasi();
 		$this->load->helper('form');
 		$this->load->view('form_lokasi');
+	}
+	
+	function hapus_lokasi($id){
+		$this->m->hapus_lokasi($id);
 	}
 	
 	
