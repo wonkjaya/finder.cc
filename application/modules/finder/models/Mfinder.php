@@ -70,6 +70,21 @@ class Mfinder extends CI_Model{
 		}
 	}
 	
+	function result($id=''){
+		if($id != ''){
+			$this->db->where('pj.ID',$id);
+			$this->db->select(['pj.judul','pj.deskripsi','pj.foto','dp.nama','ol.nama as namaLokasi','ol.alamat','ol.foto as fotoObjek']);
+			$this->db->join('data_pedagang dp','pj.id_pedagang = dp.ID','left');
+			$this->db->join('kategori k','pj.id_kategori = k.ID','left');
+			$this->db->join('objekLokasi ol','pj.id_lokasi = ol.ID','left');
+			
+			$q=$this->db->get('produk_jasa pj');
+			
+			if($q->num_rows() == 1) return $q->result();
+		}
+		return false;
+	}
+	
 
 }
 //end of file
