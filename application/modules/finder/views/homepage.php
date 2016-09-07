@@ -126,15 +126,20 @@
 			var data=JSON.parse(msg);
 			//console.log(data);
 			for(var i=0; i <= data.length; i++){
-				html='<div class="result-p">\
-	      <a href="<?=site_url("finder/result/'+ data[i].id +'/'+ data[i].judul +'")?>">'+
-	      	'<h4 class="">'+ data[i].judul +'</h4>\
-	      </a>\
-	      	<p id="res-url">'+ "<?=site_url('finder/result/" + data[i].id +"/"+ data[i].judul +"')?>" +'</p>\
-	      <p class="">\
-	      <b>Alamat : </b>'+ data[i].alamat +'.<br> <b>Keterangan :</b> ' + data[i].deskripsi +'\
-	      </p>\
-	    </div>';
+				judul=data[i].judul;
+				id=data[i].id;
+				deskripsi=data[i].deskripsi;
+				alamat=data[i].alamat;
+				link= "<?=site_url('finder/result/" + id +"/"+ judul +"')?>";
+				html='<div class="result-p">													\
+				      <a href="<?=site_url("finder/result/'+ id +'/'+ judul.replace(' ','') +'")?>">'+
+				      	'<h4 class="">'+ judul +'</h4>											\
+				      </a>																		\
+				      	<p id="res-url">'+ link +'</p>											\
+				      <p class="">																\
+				      <b>Alamat : </b>'+ alamat +'.<br> <b>Keterangan :</b> ' + deskripsi +'	\
+				      </p>																		\
+				    </div>';
 				$("#result").append(html);
 			};
 	}

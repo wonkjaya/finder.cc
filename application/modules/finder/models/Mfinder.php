@@ -50,21 +50,21 @@ class Mfinder extends CI_Model{
 		if(isset($_GET['q'])){
 			$query=$this->db->escape($_GET['q']);
 			$keywords=str_replace(' ',',',$query);
-			$sql="SELECT *,(indexJudul + indexAlamat + indexDeskripsi)/3 as indexResult FROM (
-							SELECT pj.ID,pj.judul,obj.alamat,pj.deskripsi ,
+			$sql="SELECT *,(indexJudul + indexAlamat + indexDeskripsi )/3 + indexLokasi as indexResult FROM (
+							SELECT pj.ID,pj.judul,obj.nama as lokasi,obj.alamat,pj.deskripsi ,
 							 MATCH(pj.judul) AGAINST($keywords) as indexJudul,
 							 MATCH(obj.nama) AGAINST($keywords) as indexLokasi,
 							 MATCH(obj.alamat) AGAINST($keywords) as indexAlamat,
 							 MATCH(pj.deskripsi) AGAINST($keywords) as indexDeskripsi
-							 FROM produk_jasa pj 
-								LEFT JOIN objekLokasi obj ON obj.ID=pj.id_lokasi
+							 FROM objekLokasi obj 
+								LEFT JOIN produk_jasa pj ON obj.ID=pj.id_lokasi
 								WHERE 1  
 										LIMIT 10) search
 						ORDER BY indexResult DESC
 						";
 			$q=$this->db->query($sql);
 			foreach($q->result() as $r){
-				$data[]=['id'=>$r->ID,'judul'=>$r->judul,'alamat'=>$r->alamat,'deskripsi'=>$r->deskripsi];
+				$data[]=['id'=>$r->ID,'judul'=>(!empty($r->judul)?'Produk: '.$r->judul:'Lokasi: '.$r->lokasi),'alamat'=>$r->alamat,'deskripsi'=>$r->deskripsi];
 			}
 			
 			echo json_encode($data);
@@ -73,8 +73,15 @@ class Mfinder extends CI_Model{
 	
 	function result($id=''){
 		if($id != ''){
+			$this->db->limit(1);
 			$this->db->where('pj.ID',$id);
-			$this->db->select(['pj.judul','pj.deskripsi','pj.foto','dp.nama','ol.nama as namaLokasi','ol.alamat','ol.foto as fotoObjek']);
+			$this->db->select([
+				'pj.ID as id',
+				'ol.ID as idLokasi',
+				'IF(`pj`.`judul` = "",`ol`.`nama`,`pj`.`judul`) as judul ',
+				'pj.deskripsi','pj.foto','dp.nama','ol.nama as namaLokasi',
+				'ol.alamat','ol.deskripsi as deskripsiLokasi','ol.foto as fotoObjek'
+				]);
 			$this->db->join('data_pedagang dp','pj.id_pedagang = dp.ID','left');
 			$this->db->join('kategori k','pj.id_kategori = k.ID','left');
 			$this->db->join('objekLokasi ol','pj.id_lokasi = ol.ID','left');
@@ -84,6 +91,22 @@ class Mfinder extends CI_Model{
 			if($q->num_rows() == 1) return $q->result();
 		}
 		return false;
+	}
+
+	function showKontak(){
+		if(isset($_GET['id'])){
+			$id=$_GET['id'];
+			$this->db->where('id_lokasi',$id);
+			$this->db->select(['key_kontak','value']);
+			$q=$this->db->get('kontak_list');
+			if($q->num_rows() > 0){
+				foreach($q->result() as $r){
+					$data[]=['key'=>$r->key_kontak,'value'=>$r->value];
+				}
+				echo json_encode($data);
+			}
+			return false;
+		}
 	}
 	
 

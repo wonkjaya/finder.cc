@@ -58,6 +58,10 @@ class Finder extends CI_Controller{
 		$this->load->view('info',$data);
 	}
 
+	function showKontak(){
+		$this->m->showKontak();
+	}
+
 }
 
 //end of file

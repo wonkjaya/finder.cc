@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>P-Finder | Search</title>
+	<title>P-Finder | Result</title>
 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -70,11 +70,14 @@
     <?php
     if($result != false){
     	foreach($result as $r){
+    		$id=$r->id;
+    		$idLokasi=$r->idLokasi;
     		$judul=$r->judul;
     		$deskripsi=$r->deskripsi;
     		$foto=$r->foto;
     		$nama=$r->nama;
     		$namaLokasi =$r->namaLokasi;
+    		$deskripsiLokasi =$r->deskripsiLokasi;
     		$alamat=$r->alamat;
     		$fotoObjek=$r->fotoObjek;
     	}
@@ -84,7 +87,7 @@
 	    <div class="row">
 	    	<div class="col-md-8" id="result">
 					<div class="panel">
-						<div class="panel-default panel-heading"><h3><?=isset($judul)?$judul:''?></h3></div>
+						<div class="panel-default panel-heading"><h3><?=isset($judul)?ucwords($judul):''?></h3></div>
 						<div class="panel-body">
 							<div class="col-md-3">
 								<img src="<?=base_url('uploads/'.(!empty($foto)?'produk-images/'.$foto:'no-image.png'))?>" class="img img-rounded" width="200px"/>
@@ -102,15 +105,35 @@
 							<hr/>
 						</div>
 						<label>Nama Lokasi</label> <br/><?=isset($namaLokasi)?$namaLokasi:'Belum Tersedia'?><br/><br/>
-						<label>Alamat</label> <br/><?=isset($alamat)?$alamat:'Belum Tersedia'?>
+						<label>Alamat</label> <br/><?=isset($alamat)?$alamat:'Belum Tersedia'?><br/><br/>
+						<label>Deskripsi</label> <br/><?=isset($deskripsiLokasi)?$deskripsiLokasi:'Belum Tersedia'?><br/><br/>
+						<label>Kontak:</label> <br/><p id="kontak"><button class="btn btn-primary btn-xs" onClick="setData(<?=$idLokasi?>)">Tampilkan Kontak</button></p>
 					</div>
-	    		
 	    	</div><!--col md 4-->
 	    </div>  
 	</div>
 <script src="<?=base_url('assets/js/jquery.min.js')?>"></script>
 <script src="<?=base_url('assets/js/bootstrap.min.js')?>"></script>
 <script src="<?=base_url('assets/js/script.js')?>"></script>
+<script type="text/javascript">
+	function setData(id){
+		$.ajax({
+			method : 'GET',
+			url : "<?=site_url('finder/showKontak')?>",
+			data : {'id':id}
+		}).done(function(msg){
+			var data=JSON.parse(msg);
+			for(var i=0; i <= data.length -1; i++){
+				console.log(data[i].key);
+				if(i === 0 ){
+					$("#kontak").html("<label class='label label-success'>" + data[i].key + "</label> : " + data[i].value);
+				}else{
+					$("#kontak").append("<br/><label class='label label-success'>" + data[i].key + "</label> : " + data[i].value);
+				}
+			}
+		});
+	}
+</script>
 
 </body>
 </html>
