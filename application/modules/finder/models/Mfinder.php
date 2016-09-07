@@ -104,8 +104,9 @@ class Mfinder extends CI_Model{
 					$data[]=['key'=>$r->key_kontak,'value'=>$r->value];
 				}
 				echo json_encode($data);
+			}else{
+				echo json_encode([['key'=>'nomor','value'=>'Tidak Tersedia']]);
 			}
-			return false;
 		}
 	}
 	

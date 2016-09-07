@@ -107,7 +107,7 @@
 						<label>Nama Lokasi</label> <br/><?=isset($namaLokasi)?$namaLokasi:'Belum Tersedia'?><br/><br/>
 						<label>Alamat</label> <br/><?=isset($alamat)?$alamat:'Belum Tersedia'?><br/><br/>
 						<label>Deskripsi</label> <br/><?=isset($deskripsiLokasi)?$deskripsiLokasi:'Belum Tersedia'?><br/><br/>
-						<label>Kontak:</label> <br/><p id="kontak"><button class="btn btn-primary btn-xs" onClick="setData(<?=$idLokasi?>)">Tampilkan Kontak</button></p>
+						<label>Kontak:</label> <br/><p id="kontak"><button class="btn btn-primary btn-xs" onClick="setData(<?=isset($idLokasi)?$idLokasi:0?>)">Tampilkan Kontak</button></p>
 					</div>
 	    	</div><!--col md 4-->
 	    </div>  
