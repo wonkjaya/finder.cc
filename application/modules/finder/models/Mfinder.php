@@ -53,6 +53,7 @@ class Mfinder extends CI_Model{
 			$sql="SELECT *,(indexJudul + indexAlamat + indexDeskripsi)/3 as indexResult FROM (
 							SELECT pj.ID,pj.judul,obj.alamat,pj.deskripsi ,
 							 MATCH(pj.judul) AGAINST($keywords) as indexJudul,
+							 MATCH(obj.nama) AGAINST($keywords) as indexLokasi,
 							 MATCH(obj.alamat) AGAINST($keywords) as indexAlamat,
 							 MATCH(pj.deskripsi) AGAINST($keywords) as indexDeskripsi
 							 FROM produk_jasa pj 
