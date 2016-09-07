@@ -62,17 +62,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $active_group = 'default';
 $query_builder = TRUE;
 //echo $_SERVER['HTTP_HOST'];
-if($_SERVER['HTTP_HOST'] == 'finder.malangsoftware.com'){
+if($_SERVER['HTTP_HOST'] == 'finder.malangsoftware.com'){ // Website
 	$username='rohmanah_pfinder';
 	$password='silviaputrinanda123';
 	$dbs='rohmanah_pfinder_cc';
-}else{
-	$username='root';
+}else{  //non website /Lokal
+	$username='root';    
 	$password='iTAYWGnJ';
 	$dbs='pfinder_cc';
 }
 
-$db['default'] = array(
+$db['default'] = array( // Konfigurasi Database menggunakan variabel diatas
 	'dsn'	=> '',
 	'hostname' => 'localhost',
 	'username' => $username,

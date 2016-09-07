@@ -14,7 +14,7 @@
 			?>
 		</div>
 		<div class="row">
-			<div class="panel panel-default col-md-8">
+			<div class="panel panel-default col-md-10">
 				<table class="table table-bordered">
 					<tr>
 						<th>#</th>
@@ -57,7 +57,7 @@
 					?>
 				</table>
 			</div><!--end class panel-->
-			<div class="panel panel-default col-md-3 col-offset-11" style="margin-left:20px">
+			<div class="panel panel-default col-md-2" style="margin-left:0px">
 				<p>Untuk melihat data lebih lengkap, klik tombol detail</p>
 			</div>
 		</div>
