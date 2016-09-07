@@ -1,0 +1,4 @@
+[07-Sep-2016 09:26:31 UTC] PHP Warning:  include(environment.php): failed to open stream: No such file or directory in /home/rohmanahmad/public_html/finder/index.php on line 67
+[07-Sep-2016 09:26:31 UTC] PHP Warning:  include(environment.php): failed to open stream: No such file or directory in /home/rohmanahmad/public_html/finder/index.php on line 67
+[07-Sep-2016 09:26:31 UTC] PHP Warning:  include(): Failed opening 'environment.php' for inclusion (include_path='.:/opt/alt/php55/usr/share/pear:/opt/alt/php55/usr/share/php') in /home/rohmanahmad/public_html/finder/index.php on line 67
+[07-Sep-2016 09:26:31 UTC] PHP Notice:  Use of undefined constant ENVIRONMENT - assumed 'ENVIRONMENT' in /home/rohmanahmad/public_html/finder/index.php on line 68
