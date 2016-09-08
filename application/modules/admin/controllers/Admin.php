@@ -13,7 +13,8 @@ class Admin extends CI_Controller{
 	}
 	
 	function dashboard(){
-		$this->load->view('dashboard');
+		$data['allData']=$this->m->selectAllData();
+		$this->load->view('dashboard',$data);
 	}
 	
 //produk

@@ -11,6 +11,33 @@ class Madmin extends CI_Model{
 		$kategori['0']='Lainnya';
 		return $kategori;
 	}
+
+	function selectAllData(){
+		$data['produkTerakhir']=$this->getProdukTerakhir(6);
+		$data['lokasiTerakhir']=$this->getLokasiTerakhir(6);
+		return $data;
+	}
+
+	function getProdukTerakhir($limit){
+		$id=$this->get_pedagang_id();
+		//if($id = 0) exit('data pedagang tidak valid');
+		$this->db->order_by('pj.ID','DESC');
+		$this->db->limit($limit);
+		$this->db->where('pj.id_pedagang',$id);
+		$this->db->select(['pj.*']);
+		$q=$this->db->get('produk_jasa pj');
+		return $q;
+	}
+
+	function getLokasiTerakhir($limit){
+		$id=$this->get_pedagang_id();
+		$this->db->order_by('ol.ID','DESC');
+		$this->db->limit($limit);
+		$this->db->where('id_pedagang',$id);
+		$this->db->select(['ol.*']);
+		$q=$this->db->get('objekLokasi ol');
+		return $q;
+	}
 	
 	function get_pedagang_id($email=''){
 		if(empty($email))$email=$this->session->userdata('--auth')['email'];
