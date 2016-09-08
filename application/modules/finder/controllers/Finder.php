@@ -53,8 +53,8 @@ class Finder extends CI_Controller{
 		$this->m->doSearch();
 	}
 	
-	function result($id=''){
-		$data['result']=$this->m->result($id);
+	function result($type='produk',$id=''){
+		$data['result']=$this->m->result($type,$id);
 		$this->load->view('info',$data);
 	}
 

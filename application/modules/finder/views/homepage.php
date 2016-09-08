@@ -125,14 +125,15 @@
 		$("#result").html('');
 			var data=JSON.parse(msg);
 			//console.log(data);
-			for(var i=0; i <= data.length; i++){
+			for(var i=0; i <= data.length-1; i++){
 				judul=data[i].judul;
+				type=data[i].type;
 				id=data[i].id;
 				deskripsi=data[i].deskripsi;
 				alamat=data[i].alamat;
-				link= "<?=site_url('finder/result/" + id +"/"+ judul +"')?>";
+				link= "<?=site_url('finder/result/" + type +"/"+ id +"/"+ judul.replace(" ","-") +"')?>";
 				html='<div class="result-p">													\
-				      <a href="<?=site_url("finder/result/'+ id +'/'+ judul.replace(' ','') +'")?>">'+
+				      <a href="'+ link +'">'+
 				      	'<h4 class="">'+ judul +'</h4>											\
 				      </a>																		\
 				      	<p id="res-url">'+ link +'</p>											\

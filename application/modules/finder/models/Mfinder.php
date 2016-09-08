@@ -51,30 +51,40 @@ class Mfinder extends CI_Model{
 			$query=$this->db->escape($_GET['q']);
 			$keywords=str_replace(' ',',',$query);
 			$sql="SELECT *,(indexJudul + indexAlamat + indexDeskripsi )/3 + indexLokasi as indexResult FROM (
-							SELECT pj.ID,pj.judul,obj.nama as lokasi,obj.alamat,pj.deskripsi ,
+							SELECT pj.ID,obj.ID as idLokasi,pj.judul,obj.nama as lokasi,obj.alamat,pj.deskripsi ,
 							 MATCH(pj.judul) AGAINST($keywords) as indexJudul,
 							 MATCH(obj.nama) AGAINST($keywords) as indexLokasi,
 							 MATCH(obj.alamat) AGAINST($keywords) as indexAlamat,
 							 MATCH(pj.deskripsi) AGAINST($keywords) as indexDeskripsi
 							 FROM objekLokasi obj 
 								LEFT JOIN produk_jasa pj ON obj.ID=pj.id_lokasi
-								WHERE 1  
-										LIMIT 10) search
-						ORDER BY indexResult DESC
+								) search
+						ORDER BY indexResult DESC  
+							LIMIT 10
 						";
 			$q=$this->db->query($sql);
 			foreach($q->result() as $r){
-				$data[]=['id'=>$r->ID,'judul'=>(!empty($r->judul)?'Produk: '.$r->judul:'Lokasi: '.$r->lokasi),'alamat'=>$r->alamat,'deskripsi'=>$r->deskripsi];
+				$data[]=[
+					'type'=>(!empty($r->ID)?'produk':'lokasi'),
+					'id'=>(!empty($r->ID)?$r->ID:$r->idLokasi),
+					'judul'=>(!empty($r->judul)?'Produk: '.$r->judul:'Lokasi: '.$r->lokasi),
+					'alamat'=>$r->alamat,
+					'deskripsi'=>$r->deskripsi
+					];
 			}
 			
 			echo json_encode($data);
 		}
 	}
 	
-	function result($id=''){
+	function result($type='',$id=''){
 		if($id != ''){
 			$this->db->limit(1);
-			$this->db->where('pj.ID',$id);
+			if($type=='produk'){
+				$this->db->where('pj.ID',$id);
+			}else{
+				$this->db->where('ol.ID',$id);
+			}
 			$this->db->select([
 				'pj.ID as id',
 				'ol.ID as idLokasi',
