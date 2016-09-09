@@ -207,6 +207,19 @@ class Madmin extends CI_Model{
 		$this->db->delete('produk_jasa');
 		redirect('admin/dagangan');
 	}
+	
+	function insert_kategori(){
+		if($_POST){
+			$data=["nama"=>$this->input->post('kategori')];
+			$this->db->insert('kategori',$data);
+		}
+	}
+	
+	function get_kategori(){
+		$this->db->order_by('ID','DESC');
+		$q=$this->db->get('kategori');
+		return $q->result();
+	}
 
 }
 //end of file

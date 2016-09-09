@@ -58,7 +58,7 @@
 		    ?>
 		    <ul class="nav navbar-nav navbar-right">
 		        <li><a href="<?=site_url('finder/register')?>" >Daftar</a></li>
-				<li><a href="#" id="link-login" data-toggle='modal' data-target='.modal-login'>Login</a></li>
+				<li><a href="<?=site_url('finder/login')?>" id="link-login" data-toggle='modal' data-target='.modal-login'>Login</a></li>
 		    </ul>
 		    <?php
 			}

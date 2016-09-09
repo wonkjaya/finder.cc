@@ -17,8 +17,14 @@
         <li class="<?=($header['menu_aktif']==1)?'active':'';?>">
         	<a href="<?=site_url('admin')?>"><i class="glyphicon glyphicon-home"></i> Home</a>
         </li>
-        <li class="<?=($header['menu_aktif']==2)?'active':'';?>">
-        	<a href="<?=site_url('admin/dagangan')?>"><i class="glyphicon glyphicon-shopping-cart"></i> Produk & Jasa</a>
+        <li class="dropdown <?=($header['menu_aktif']==2)?'active':'';?>">
+        	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+        		<i class="glyphicon glyphicon-shopping-cart"></i> Produk & Jasa <span class="caret"></span>
+        	</a>
+        	<ul class="dropdown-menu">
+            <li><a href="<?=site_url('admin/new_kategori')?>">New Kategori</a></li>
+            <li><a href="<?=site_url('admin/dagangan')?>">Produk Jasa</a></li>
+          </ul>
         </li>
         <li class="dropdown <?=($header['menu_aktif']==3)?'active':'';?>">
         	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">

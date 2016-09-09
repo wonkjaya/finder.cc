@@ -50,17 +50,20 @@ class Mfinder extends CI_Model{
 		if(isset($_GET['q'])){
 			$query=$this->db->escape($_GET['q']);
 			$keywords=str_replace(' ',',',$query);
-			$sql="SELECT *,(indexJudul + indexAlamat + indexDeskripsi )/3 + indexLokasi as indexResult FROM (
-							SELECT pj.ID,obj.ID as idLokasi,pj.judul,obj.nama as lokasi,obj.alamat,pj.deskripsi ,
-							 MATCH(pj.judul) AGAINST($keywords) as indexJudul,
-							 MATCH(obj.nama) AGAINST($keywords) as indexLokasi,
-							 MATCH(obj.alamat) AGAINST($keywords) as indexAlamat,
-							 MATCH(pj.deskripsi) AGAINST($keywords) as indexDeskripsi
-							 FROM objekLokasi obj 
-								LEFT JOIN produk_jasa pj ON obj.ID=pj.id_lokasi
-								) search
-						ORDER BY indexResult DESC  
-							LIMIT 10
+			$sql="SELECT * FROM(
+							SELECT *,(indexJudul + indexAlamat + indexDeskripsi )/3 + indexLokasi as indexResult FROM (
+								SELECT pj.ID,obj.ID as idLokasi,pj.judul,obj.nama as lokasi,obj.alamat,pj.deskripsi ,
+								 MATCH(pj.judul) AGAINST($keywords) as indexJudul,
+								 MATCH(obj.nama) AGAINST($keywords) as indexLokasi,
+								 MATCH(obj.alamat) AGAINST($keywords) as indexAlamat,
+								 MATCH(pj.deskripsi) AGAINST($keywords) as indexDeskripsi
+								 FROM objekLokasi obj 
+									LEFT JOIN produk_jasa pj ON obj.ID=pj.id_lokasi
+									) search
+								ORDER BY indexResult DESC
+									) hasil
+						WHERE indexResult > 0  
+						LIMIT 10
 						";
 			$q=$this->db->query($sql);
 			foreach($q->result() as $r){

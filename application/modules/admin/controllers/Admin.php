@@ -72,6 +72,12 @@ class Admin extends CI_Controller{
 		$this->m->hapus_lokasi($id);
 	}
 	
+	function new_kategori(){
+		$this->m->insert_kategori();
+		$data['kategori']=$this->m->get_kategori();
+		$this->load->view('kategori',$data);
+	}
+	
 	
 }
 
