@@ -78,6 +78,12 @@ class Admin extends CI_Controller{
 		$this->load->view('kategori',$data);
 	}
 	
+	function edit_lokasi($id=0){
+		$this->m->save_lokasi($id);
+		$data['lokasi']=$this->m->get_one_lokasi($id);
+		$this->load->helper('form');
+		$this->load->view('form_lokasi',$data);
+	}
 	
 }
 

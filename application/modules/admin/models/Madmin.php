@@ -145,7 +145,7 @@ class Madmin extends CI_Model{
 		return false;
 	}
 
-	function save_lokasi(){
+	function save_lokasi($id=0){
 		if($_POST){
 			//print_r($_POST);
 			$data['id_pedagang']=$this->get_pedagang_id();
@@ -157,9 +157,15 @@ class Madmin extends CI_Model{
 			$dataUpload=['inputName'=>'fotoLokasi','path'=>'lokasi-images/','allowedType'=>'jpg|png'];
 			$foto=$this->upload_gambar($dataUpload);
 			if(!empty($foto)) $data['foto']=$foto;
-			if($this->db->insert('objekLokasi',$data)){
-				$this->session->set_flashdata('success','Data Berhasil Dimasukkan');
-				redirect('admin/new_lokasi');
+			if($id == 0){
+				if($this->db->insert('objekLokasi',$data)){
+					$this->session->set_flashdata('success','Data Berhasil Dimasukkan');
+					redirect('admin/new_lokasi');
+				}				
+			}else{
+				$id_pedagang=$this->get_pedagang_id();
+				$this->db->where(['ID'=>$id,'id_pedagang'=>$id_pedagang]);
+				$this->db->update('objekLokasi',$data);
 			}
 		}
 	}
@@ -219,6 +225,16 @@ class Madmin extends CI_Model{
 		$this->db->order_by('ID','DESC');
 		$q=$this->db->get('kategori');
 		return $q->result();
+	}
+
+	function get_one_lokasi($id){
+		$id_pedagang=$this->get_pedagang_id();
+		if($id > 0){
+			$this->db->where('ID',$id);
+			$this->db->where('id_pedagang',$id_pedagang);
+			$q=$this->db->get('objekLokasi');
+			return $q->result();
+		}
 	}
 
 }

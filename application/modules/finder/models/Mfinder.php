@@ -48,6 +48,7 @@ class Mfinder extends CI_Model{
 	
 	function doSearch(){
 		if(isset($_GET['q'])){
+			$data=[];
 			$query=$this->db->escape($_GET['q']);
 			$keywords=str_replace(' ',',',$query);
 			$sql="SELECT * FROM(

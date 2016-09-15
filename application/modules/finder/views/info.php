@@ -54,7 +54,7 @@
 		    ?>
 		    <ul class="nav navbar-nav navbar-right">
 		        <li><a href="<?=site_url('finder/register')?>" >Daftar</a></li>
-				<li><a href="#" id="link-login" data-toggle='modal' data-target='.modal-login'>Login</a></li>
+				<li><a href="<?=site_url('finder/login')?>" id="link-login">Login</a></li>
 		    </ul>
 		    <?php
 			}
@@ -89,17 +89,18 @@
 					<div class="panel">
 						<div class="panel-default panel-heading"><h3><?=isset($judul)?ucwords($judul):''?></h3></div>
 						<div class="panel-body">
-							<div class="col-md-3">
-								<img src="<?=base_url('uploads/'.(!empty($foto)?'produk-images/'.$foto:'no-image.png'))?>" class="img img-rounded" width="200px"/>
+							<div class="col-md-3" style="text-align:center;">
+								<img src="<?=base_url('uploads/'.(!empty($foto)?'produk-images/'.$foto:'no-image.png'))?>" 
+								class="img img-rounded" style="width:100%;max-width:200px"/>
 							</div>
-							<div style="margin-left:40px">
+							<div style="margin-left:40px;margin-top:30px">
 								<p><?=isset($deskripsi)?$deskripsi:''?></p>
 							</div>
 						</div>
 					</div>	    		
 	    	</div> <!--col md 8-->
 	    	<div class="col-md-3" id="result">
-					<div class="row">
+					<div class="row" style="padding:10px;text-align:center;">
 						<div class="col-md-12">
 							<img class="img img-rounded" src="<?=base_url('uploads/'.(!empty($fotoObjek)?'lokasi-images/'.$fotoObjek:'no-image.png'))?>" width="200px"/>
 							<hr/>
