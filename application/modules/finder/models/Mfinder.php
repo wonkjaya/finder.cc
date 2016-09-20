@@ -73,7 +73,7 @@ class Mfinder extends CI_Model{
 					'id'=>(!empty($r->ID)?$r->ID:$r->idLokasi),
 					'judul'=>(!empty($r->judul)?'Produk: '.$r->judul:'Lokasi: '.$r->lokasi),
 					'alamat'=>$r->alamat,
-					'deskripsi'=>(!empty($r->deskripsi)?$r->lokasiDeskripsi:''
+					'deskripsi'=>(!empty($r->deskripsi)?$r->deskripsi:$r->lokasiDeskripsi)
 					];
 			}
 			
