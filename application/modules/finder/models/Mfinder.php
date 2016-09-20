@@ -53,7 +53,7 @@ class Mfinder extends CI_Model{
 			$keywords=str_replace(' ',',',$query);
 			$sql="SELECT * FROM(
 							SELECT *,(indexJudul + indexAlamat + indexDeskripsi )/3 + indexLokasi as indexResult FROM (
-								SELECT pj.ID,obj.ID as idLokasi,pj.judul,obj.nama as lokasi,obj.alamat,pj.deskripsi ,
+								SELECT pj.ID,obj.ID as idLokasi,obj.deskripsi as lokasiDeskripsi,pj.judul,obj.nama as lokasi,obj.alamat,pj.deskripsi ,
 								 MATCH(pj.judul) AGAINST($keywords) as indexJudul,
 								 MATCH(obj.nama) AGAINST($keywords) as indexLokasi,
 								 MATCH(obj.alamat) AGAINST($keywords) as indexAlamat,
@@ -73,7 +73,7 @@ class Mfinder extends CI_Model{
 					'id'=>(!empty($r->ID)?$r->ID:$r->idLokasi),
 					'judul'=>(!empty($r->judul)?'Produk: '.$r->judul:'Lokasi: '.$r->lokasi),
 					'alamat'=>$r->alamat,
-					'deskripsi'=>$r->deskripsi
+					'deskripsi'=>(!empty($r->deskripsi)?$r->lokasiDeskripsi:''
 					];
 			}
 			
