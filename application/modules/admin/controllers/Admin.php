@@ -86,12 +86,21 @@ class Admin extends CI_Controller{
 	function edit_lokasi($id=0){
 		$this->m->save_lokasi($id);
 		$data['lokasi']=$this->m->get_one_lokasi($id);
+		$data['kontak']=$this->m->getkontak($id);
 		$this->load->helper('form');
 		$this->load->view('form_lokasi',$data);
 	}
 	
 	function delete_kategori($id=0){
 		$this->m->delete_kategori($id);
+	}
+	
+	function new_kontak(){
+		$this->m->new_kontak();
+	}
+	
+	function delete_kontak($id=0){
+		$this->m->delete_kontak($id);
 	}
 	
 }

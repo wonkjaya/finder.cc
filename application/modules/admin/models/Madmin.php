@@ -250,6 +250,25 @@ class Madmin extends CI_Model{
 			redirect('admin/kategori');
 		}
 	}
+	
+	function getkontak($id=0){
+		$this->db->where('id_lokasi',$id);
+		$q=$this->db->get('kontak_list');
+		return $q->result();
+	}
+	
+	function new_kontak(){
+		if(isset($_GET['kontak'])){
+			$this->db->insert('kontak_list',['key_kontak'=>'no telp','value'=>$this->input->get('kontak'),'id_lokasi'=>$this->input->get('id')]);
+			redirect('admin/edit_lokasi/'.$this->input->get('id').'/prefered_content');
+		}
+	}
+	
+	function delete_kontak($id){
+		$this->db->where('ID',$id);
+		$this->db->delete('kontak_list');
+		redirect('admin/edit_lokasi/'.$this->input->get('id').'/prefered_content');
+	}
 
 }
 //end of file

@@ -92,17 +92,29 @@ if(isset($lokasi)){
 			<div class="panel panel-default col-md-3 col-md-offset-1">
 				<div class="panel-body" style="text-align:justify">
 					<p>
+					<?php
+					if(isset($kontak)){?>
+					<form action="<?=site_url('admin/new_kontak')?>" method="GET" name="newKontak">
 						<label>Daftar Kontak</label>
 						<div class="input-group">
-							<input class="form-control" id="kontak" style=""/>
-							<span class="input-group-addon btn btn-primary" id="add_kontak">Add</span>
+							<input type="hidden" value="<?=$this->uri->segment(3)?>" name="id"/>
+							<input class="form-control" name="kontak" style="width:180px"/>
+							<span class="input-group-addon btn btn-primary" id="add_kontak" onclick="newKontak.submit()">Add</span>
 						</div>
+					</form>
+					<?php } ?>
 					</p>
 					<p>
 						<?php
 							if(isset($kontak))
 							foreach($kontak as $r){
-							
+								?>
+								<div class="btn-group">
+									<a href="#" class="btn btn-xs btn-primary"><?=$r->key_kontak?></a>
+									<a href="#" class="btn btn-xs btn-default"><?=$r->value?></a>
+									<a href="<?=site_url('admin/delete_kontak/'.$r->ID.'/prefered?id='.$r->id_lokasi)?>" class="btn btn-xs btn-danger">X</a>
+								</div>
+								<?php
 							}
 						?>
 					</p>
