@@ -18,7 +18,7 @@
 		<div class="row">
 <!--KONTEN AWAL-->
 <?php
-if($lokasi){
+if(isset($lokasi)){
 	foreach($lokasi as $r){
 		$nama=$r->nama;
 		$alamat=$r->alamat;
