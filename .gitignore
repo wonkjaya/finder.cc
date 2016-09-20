@@ -1,1 +1,4 @@
 environment.php
+.git/
+system/
+error_log

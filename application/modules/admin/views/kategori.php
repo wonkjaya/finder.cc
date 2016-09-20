@@ -27,10 +27,10 @@
 				<div class="panel-heading">Kategori List</div>
 				<div class="panel-body">
 				 <div class="col-md-12" style="margin-bottom:20px">
-					 <form class="form-inline">
+					 <form class="form-inline" method="GET">
 						<div class="input-group">
-							<input type="text" class="form-control input-sm" id="kategoriName" placeholder="Kategori" style="width:200px">
-							<button type="submit" class="btn btn-sm input-group-addon btn-primary" style="width:50px">Add</button>
+							<input type="text" name="kategori" class="form-control input-sm" id="kategoriName" placeholder="Kategori" style="width:200px">
+							<button type="submit" class="btn btn-sm input-group-addon btn-primary" style="width:80px">Quick Add</button>
 						</div>
 					</form>
 				 </div>

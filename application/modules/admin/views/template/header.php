@@ -22,7 +22,7 @@
         		<i class="glyphicon glyphicon-shopping-cart"></i> Produk & Jasa <span class="caret"></span>
         	</a>
         	<ul class="dropdown-menu">
-            <li><a href="<?=site_url('admin/new_kategori')?>">New Kategori</a></li>
+            <li><a href="<?=site_url('admin/kategori')?>">Kategori</a></li>
             <li><a href="<?=site_url('admin/dagangan')?>">Produk Jasa</a></li>
           </ul>
         </li>

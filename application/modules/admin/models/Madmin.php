@@ -216,8 +216,14 @@ class Madmin extends CI_Model{
 	
 	function insert_kategori(){
 		if($_POST){
+			if(isset($_POST['kategori'])){
 			$data=["nama"=>$this->input->post('kategori')];
-			$this->db->insert('kategori',$data);
+				try{
+					$this->db->insert('kategori',$data);
+					}catch(Exception $e){
+						$e->getMessage();
+					}
+			}
 		}
 	}
 	

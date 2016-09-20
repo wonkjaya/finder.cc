@@ -138,7 +138,7 @@
 				      </a>																		\
 				      	<p id="res-url">'+ link +'</p>											\
 				      <p class="">																\
-				      <b>Alamat : </b>'+ alamat +'.<br> <b>Keterangan :</b> ' + deskripsi +'	\
+				      <b>Alamat : </b>'+ alamat +'.<br> <b>Keterangan :</b> ' + deskripsi.substr(0,60) +'	\
 				      </p>																		\
 				    </div>';
 				$("#result").append(html);
