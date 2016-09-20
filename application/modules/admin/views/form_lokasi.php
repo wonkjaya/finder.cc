@@ -98,6 +98,14 @@ if($lokasi){
 							<span class="input-group-addon btn btn-primary" id="add_kontak">Add</span>
 						</div>
 					</p>
+					<p>
+						<?php
+							if(isset($kontak))
+							foreach($kontak as $r){
+							
+							}
+						?>
+					</p>
 				</div><!--end panel-body-->
 			</div><!--end panel-default-->
 		</div><!--end row body-->

@@ -13,8 +13,8 @@ class Madmin extends CI_Model{
 	}
 
 	function selectAllData(){
-		$data['produkTerakhir']=$this->getProdukTerakhir(6);
-		$data['lokasiTerakhir']=$this->getLokasiTerakhir(6);
+		$data['produkTerakhir']=$this->getProdukTerakhir(6); // limit 6
+		$data['lokasiTerakhir']=$this->getLokasiTerakhir(6); // limit 6
 		return $data;
 	}
 
@@ -218,11 +218,10 @@ class Madmin extends CI_Model{
 		if($_GET){
 			if(isset($_GET['kategori'])){
 			$data=["nama"=>$this->input->get('kategori')];
-				try{
-					$this->db->insert('kategori',$data);
-					redirect('admin/kategori');
-					}catch(Exception $e){
-						echo $e->getMessage();
+					if(!$this->db->insert('kategori',$data)){
+						echo "data terdapat kesalahan";
+					}else{
+						redirect('admin/kategori');
 					}
 			}
 		}
