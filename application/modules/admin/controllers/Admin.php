@@ -85,6 +85,10 @@ class Admin extends CI_Controller{
 		$this->load->view('form_lokasi',$data);
 	}
 	
+	function delete_kategori($id=0){
+		$this->m->delete_kategori($id);
+	}
+	
 }
 
 //end of file

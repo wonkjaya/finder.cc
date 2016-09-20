@@ -215,13 +215,14 @@ class Madmin extends CI_Model{
 	}
 	
 	function insert_kategori(){
-		if($_POST){
-			if(isset($_POST['kategori'])){
-			$data=["nama"=>$this->input->post('kategori')];
+		if($_GET){
+			if(isset($_GET['kategori'])){
+			$data=["nama"=>$this->input->get('kategori')];
 				try{
 					$this->db->insert('kategori',$data);
+					redirect('admin/kategori');
 					}catch(Exception $e){
-						$e->getMessage();
+						echo $e->getMessage();
 					}
 			}
 		}
@@ -240,6 +241,14 @@ class Madmin extends CI_Model{
 			$this->db->where('id_pedagang',$id_pedagang);
 			$q=$this->db->get('objekLokasi');
 			return $q->result();
+		}
+	}
+	
+	function delete_kategori($id){
+		if($id > 0){
+			$this->db->where('ID',$id);
+			$this->db->delete('kategori');
+			redirect('admin/kategori');
 		}
 	}
 

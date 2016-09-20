@@ -43,7 +43,7 @@
 								?>
 							<div class="btn-group">
 								<a href="#" class="btn btn-xs btn-primary"><?=$kategori?></a>
-								<a href="<?=site_url('admin/delete_kategori/'.$id)?>" class="btn btn-xs btn-danger">X</a>
+								<a href="<?=site_url('admin/delete_kategori/'.$id.'/prefered')?>" class="btn btn-xs btn-danger">X</a>
 							</div>
 					<?php
 						}
