@@ -36,6 +36,7 @@
 					        <th data-field="judul">Title</th>
 					        <th data-field="kategori">Category</th>
 					        <th data-field="pedagang">Author</th>
+					        <th></th>
 					    </tr>
 					    </thead>
 					</table>
