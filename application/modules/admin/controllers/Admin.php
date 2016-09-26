@@ -2,10 +2,13 @@
 
 class Admin extends CI_Controller{
 
+	var $theme;
+
 	function __construct(){
 		parent :: __construct();
 		$this->load->model('madmin','m');
 		$this->load->library('session');
+		$this->theme=(defined('THEME')?THEME:'default');
 	}
 	
 	function logout(){
@@ -14,24 +17,34 @@ class Admin extends CI_Controller{
 	}
 	
 	function index(){
+		//echo $this->theme;
 		$this->dashboard();
 	}
 	
 	function dashboard(){
 		$data['allData']=$this->m->selectAllData();
-		$this->load->view('dashboard',$data);
+		if($this->theme == 'lumino'){
+			$total_user_new=$this->m->get_total_user_baru();
+			$total_visitor_new=0;
+			$total_page_views_today=100;
+			$data['total']=array('user'=>$total_user_new,'visitor'=>$total_visitor_new,'pageview'=>$total_page_views_today);
+		}
+		$this->load->view($this->theme . '/dashboard',$data);
 	}
 	
 //produk
+    function allPosts(){
+        $this->m->allPosts();
+    }
 	
 	function dagangan(){
 		$data['dagangan']=$this->m->get_dagangan();
-		$this->load->view('produkJasa',$data);
+		$this->load->view($this->theme . '/produkJasa',$data);
 	}
 	
 	function detail_produkJasa($id){
 		$data['detail_produkJasa']=$this->m->get_detailProdukJasa($id);
-		$this->load->view('detail_ProdukJasa',$data);
+		$this->load->view($this->theme . '/detail_ProdukJasa',$data);
 	}
 	
 	function new_post(){
@@ -39,7 +52,7 @@ class Admin extends CI_Controller{
 		$this->load->helper('form');
 		$data['lokasi']=$this->m->get_lokasi(); 
 		$data['kategori']=$this->m->load_kategori();
-		$this->load->view('form_produkJasa',$data);
+		$this->load->view($this->theme . '/form_produkJasa',$data);
 	}
 	
 	function edit_produkJasa($idPost){
@@ -48,7 +61,7 @@ class Admin extends CI_Controller{
 		$data['post']=$this->m->getOnePost($idPost);
 		$data['lokasi']=$this->m->get_lokasi(); 
 		$data['kategori']=$this->m->load_kategori();
-		$this->load->view('form_produkJasa',$data);
+		$this->load->view($this->theme . '/form_produkJasa',$data);
 	}
 	
 	function hapus_proudkJasa($id){
@@ -59,18 +72,18 @@ class Admin extends CI_Controller{
 
 	function list_lokasi(){
 		$data['lokasi']=$this->m->get_lokasi();
-		$this->load->view('objekLokasi',$data);
+		$this->load->view($this->theme . '/objekLokasi',$data);
 	}
 	
 	function detail_lokasi($id){
 		$data['detail_lokasi']=$this->m->get_detailLokasi($id);
-		$this->load->view('detail_lokasi',$data);
+		$this->load->view($this->theme . '/detail_lokasi',$data);
 	}
 
 	function new_lokasi(){
 		$this->m->save_lokasi();
 		$this->load->helper('form');
-		$this->load->view('form_lokasi');
+		$this->load->view($this->theme . '/form_lokasi');
 	}
 	
 	function hapus_lokasi($id){
@@ -80,7 +93,7 @@ class Admin extends CI_Controller{
 	function kategori(){
 		$this->m->insert_kategori();
 		$data['kategori']=$this->m->get_kategori();
-		$this->load->view('kategori',$data);
+		$this->load->view($this->theme . '/kategori',$data);
 	}
 	
 	function edit_lokasi($id=0){
@@ -88,7 +101,7 @@ class Admin extends CI_Controller{
 		$data['lokasi']=$this->m->get_one_lokasi($id);
 		$data['kontak']=$this->m->getkontak($id);
 		$this->load->helper('form');
-		$this->load->view('form_lokasi',$data);
+		$this->load->view($this->theme . '/form_lokasi',$data);
 	}
 	
 	function delete_kategori($id=0){

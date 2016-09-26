@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>P-Finder | Daftar</title>
 
-		<link rel="icon" href="<?=base_url('assets/css/img/icon.ico')?>" type="image/x-icon">
-		<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/styles.css')?>" />
+		<link rel="icon" href="<?=base_url('assets/default/css/img/icon.ico')?>" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" href="<?=base_url('assets/bootstrap-components/css/bootstrap.min.css')?>" />
+		<link rel="stylesheet" type="text/css" href="<?=base_url('assets/default/css/styles.css')?>" />
 
 </head>
 
@@ -24,7 +25,7 @@
 	        <span class="icon-bar"></span>
 	        <span class="icon-bar"></span>
 	      </button>
-          <img src="<?=base_url('assets/css/img/logo.png')?>" class="navbar-brand visible-xs">
+          <img src="<?=base_url('assets/default/css/img/logo.png')?>" class="navbar-brand visible-xs">
           <a class="navbar-brand" href="<?=site_url()?>">P-Finder</a>
           <!--div class="input-group input-group-lg" style="max-width:400px">
 			  <!--span class="info input-group-addon btn visible-xs" style="background:#6C1BD8;color:#fff;width: 50px;" id="submit">Go</span-->
@@ -58,7 +59,7 @@
 		    ?>
 		    <ul class="nav navbar-nav navbar-right">
 		        <li><a href="<?=site_url('finder/register')?>" >Daftar</a></li>
-				<li><a href="<?=site_url('finder/login')?>" id="link-login" data-toggle='modal' data-target='.modal-login'>Login</a></li>
+				<li><a href="<?=site_url('finder/login')?>" id="link-login">Login</a></li>
 		    </ul>
 		    <?php
 			}
@@ -131,9 +132,9 @@
  $this->load->view('includes/ketentuan.php');
  //$this->load->view('includes/modal.login.php');
 ?>
-<script src="<?=base_url('assets/js/jquery.min.js')?>"></script>
-<script src="<?=base_url('assets/js/bootstrap.js')?>"></script>
-<script src="<?=base_url('assets/js/script.js')?>"></script>
+<script src="<?=base_url('assets/jquery-components/js/jquery.min.js')?>"></script>
+<script src="<?=base_url('assets/bootstrap-components/js/bootstrap.min.js')?>"></script>
+<script src="<?=base_url('assets/default/js/script.js')?>"></script>
 <script type="text/javascript">
 	$("#submit-tombol").attr("type","button");
 

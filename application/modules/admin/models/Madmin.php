@@ -269,6 +269,39 @@ class Madmin extends CI_Model{
 		$this->db->delete('kontak_list');
 		redirect('admin/edit_lokasi/'.$this->input->get('id').'/prefered_content');
 	}
+	
+// LUMINO
+	function get_total_user_baru(){
+		$this->db->select('count(ID) as total');
+		$this->db->where('DATE(dibuat) ' ,date('Y-m-d'));
+		$q=$this->db->get('users');
+		return $q->row()->total;
+	}
+	
+	function allPosts(){
+		$this->db->where('pj.id_pedagang',$this->get_pedagang_id());
+		$this->db->select(['pj.ID','pj.judul','k.nama as kategori','dp.nama as pedagang']);
+		$this->db->join('data_pedagang dp','dp.ID=pj.id_pedagang','left');
+		$this->db->join('kategori k','k.ID=pj.id_kategori','left');
+		$q=$this->db->get('produk_jasa pj');
+		if($q->num_rows() > 0){
+		    $no=1;
+			foreach($q->result() as $row){
+			    $data[]=[
+			        'No'=>$no,
+			        'ID'=>$row->ID,
+			        'judul'=>$row->judul,
+			        'kategori'=>$row->kategori,
+			        'pedagang'=>$row->pedagang];
+			    $no++;
+			}
+			echo json_encode($data);
+		}else{
+			return false;
+		}
+	}
+	
+	
 
 }
 //end of file

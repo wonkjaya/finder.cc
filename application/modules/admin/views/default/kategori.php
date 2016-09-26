@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link href="<?=base_url('assets/css/bootstrap.min.css')?>" rel="stylesheet">
+		<link href="<?=base_url('assets/bootstrap-components/css/bootstrap.min.css')?>" rel="stylesheet">
 
 		<title>Kategori</title>
 	</head>

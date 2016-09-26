@@ -6,8 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<link rel="icon" href="<?=base_url('assets/css/img/icon.ico')?>" type="image/x-icon">
-		<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/styles.css')?>" />
+		<link rel="icon" href="<?=base_url('assets/default/css/img/icon.ico')?>" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" href="<?=base_url('assets/bootstrap-components/css/bootstrap.min.css')?>" />
+		<link rel="stylesheet" type="text/css" href="<?=base_url('assets/default/css/styles.css')?>" />
 </head>
 <body>
 	<!-- Fixed navbar -->
@@ -24,7 +25,7 @@
 	        <span class="icon-bar"></span>
 	      </button>
           <a class="navbar-brand hidden-xs" href="#">P-Finder</a>
-          <img src="<?=base_url('assets/css/img/logo.png')?>" class="navbar-brand visible-xs">
+          <img src="<?=base_url('assets/default/css/img/logo.png')?>" class="navbar-brand visible-xs">
           <div class="input-group input-group-lg" style="max-width:400px">
 			  <!--span class="info input-group-addon btn visible-xs" style="background:#6C1BD8;color:#fff;width: 50px;" id="submit">Go</span-->
 			  <input type="text" class="form-control" autocomplete="off" placeholder="Cari Info Pedagang atau Jasa Sekarang" style="font-size:11px" id="q" onkeyup="tekan_tombol();">
@@ -78,9 +79,9 @@
 	    	</div>
 	    </div>  
 	</div>
-<script src="<?=base_url('assets/js/jquery.min.js')?>"></script>
-<script src="<?=base_url('assets/js/bootstrap.min.js')?>"></script>
-<script src="<?=base_url('assets/js/script.js')?>"></script>
+<script src="<?=base_url('assets/jquery-components/js/jquery.min.js')?>"></script>
+<script src="<?=base_url('assets/bootstrap-components/js/bootstrap.min.js')?>"></script>
+<script src="<?=base_url('assets/default/js/script.js')?>"></script>
 <script type="text/javascript">
 	check_get_default();
 

@@ -6,8 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<link rel="icon" href="<?=base_url('assets/css/img/icon.ico')?>" type="image/x-icon">
-		<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/styles.css')?>" />
+		<link rel="icon" href="<?=base_url('assets/default/css/img/icon.ico')?>" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" href="<?=base_url('assets/bootstrap-components/css/bootstrap.min.css')?>" />
+		<link rel="stylesheet" type="text/css" href="<?=base_url('assets/default/css/styles.css')?>" />
 </head>
 <body>
 	<!-- Fixed navbar -->
@@ -113,9 +114,9 @@
 	    	</div><!--col md 4-->
 	    </div>  
 	</div>
-<script src="<?=base_url('assets/js/jquery.min.js')?>"></script>
-<script src="<?=base_url('assets/js/bootstrap.min.js')?>"></script>
-<script src="<?=base_url('assets/js/script.js')?>"></script>
+<script src="<?=base_url('assets/jquery-components/js/jquery.min.js')?>"></script>
+<script src="<?=base_url('assets/bootstrap-components/js/bootstrap.min.js')?>"></script>
+<script src="<?=base_url('assets/default/js/script.js')?>"></script>
 <script type="text/javascript">
 	function setData(id){
 		$.ajax({
