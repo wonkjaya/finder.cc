@@ -1,5 +1,8 @@
 
-	<?php include('templates/header.php'); ?>		
+	<?php 
+	    $header=array('menu_aktif'=>1);
+	    include('templates/header.php'); 
+	?>		
 	<?php include('templates/sidebar.php'); ?>
 		
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			

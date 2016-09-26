@@ -279,6 +279,7 @@ class Madmin extends CI_Model{
 	}
 	
 	function allPosts(){
+	    $total=$this->get_total_rows();
 		$this->db->where('pj.id_pedagang',$this->get_pedagang_id());
 		$this->db->select(['pj.ID','pj.judul','k.nama as kategori','dp.nama as pedagang']);
 		$this->db->join('data_pedagang dp','dp.ID=pj.id_pedagang','left');
@@ -286,8 +287,9 @@ class Madmin extends CI_Model{
 		$q=$this->db->get('produk_jasa pj');
 		if($q->num_rows() > 0){
 		    $no=1;
+		    $data['total']=$total;
 			foreach($q->result() as $row){
-			    $data[]=[
+			    $data['rows'][]=[
 			        'No'=>$no,
 			        'ID'=>$row->ID,
 			        'judul'=>$row->judul,
@@ -299,6 +301,13 @@ class Madmin extends CI_Model{
 		}else{
 			return false;
 		}
+	}
+	
+	function get_total_rows(){
+	    $this->db->where('id_pedagang',$this->get_pedagang_id());
+	    $this->db->select('COUNT(ID) as total');
+	    $q=$this->db->get('produk_jasa');
+	    return $q->row()->total;
 	}
 	
 	
