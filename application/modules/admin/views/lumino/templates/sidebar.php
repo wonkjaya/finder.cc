@@ -59,6 +59,13 @@
 							</svg> Browse 
 						</a>
 					</li>
+					<li>
+						<a class="" href="<?=site_url('admin/kategori')?>">
+							<svg class="glyph stroked monitor">
+							    <use xlink:href="#stroked-monitor"></use>
+							</svg> Kategori
+						</a>
+					</li>
 				</ul>
 			</li>
 			<li class="parent <?=($aktif == 4)?'active':''?>">
@@ -71,17 +78,17 @@
 				</a>
 				<ul class="children collapse" id="sub-item-location">
 					<li>
-						<a class="" href="<?=site_url('admin/')?>">
+						<a class="" href="<?=site_url('admin/new_lokasi')?>">
 							<svg class="glyph stroked plus-sign">
 							    <use xlink:href="#stroked-plus-sign"></use>
-							</svg> New Location
+							</svg> New 
 						</a>
 					</li>
 					<li>
-						<a class="" href="<?=site_url('admin/')?>">
+						<a class="" href="<?=site_url('admin/list_lokasi')?>">
 							<svg class="glyph stroked monitor">
 							    <use xlink:href="#stroked-monitor"></use>
-							</svg> Browse Location
+							</svg> Browse 
 						</a>
 					</li>
 				</ul>

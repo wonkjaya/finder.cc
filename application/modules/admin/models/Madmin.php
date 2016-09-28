@@ -133,8 +133,6 @@ class Madmin extends CI_Model{
 		$q=$this->db->get('produk_jasa pj');
 		if($q->num_rows() > 0){
 			return $q->result();
-		}else{
-			return false;
 		}
 	}
 
@@ -208,7 +206,7 @@ class Madmin extends CI_Model{
 		redirect('admin/list_lokasi');
 	}
 	
-	function hapus_produkJasa($id){
+	function delete_produkJasa($id){
 		$this->db->where(['ID'=>$id,'id_pedagang'=>$this->get_pedagang_id()]);
 		$this->db->delete('produk_jasa');
 		redirect('admin/dagangan');

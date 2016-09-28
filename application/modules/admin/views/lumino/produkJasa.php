@@ -29,7 +29,7 @@
 			<div class="col-md-10">
 			 <div class="panel panel-primary">
 				<div class="panel-body">
-					<table data-toggle="table" 
+					<!--table data-toggle="table" 
                             data-url="<?=site_url('admin/allPosts')?>" 
                             data-show-columns="true"
                             data-search="true"
@@ -47,6 +47,52 @@
 					        <th data-formatter="actionFormatter" data-events="actionEvents"></th>
 					    </tr>
 					    </thead>
+					</table-->
+					<table class="table">
+					    <thead>
+					        <tr>
+					            <th>No</th>
+					            <th>Title</th>
+					            <th>Category</th>
+					            <th>Author</th>
+					            <th>*</th>
+					        </tr>
+					    </thead>
+					    <tbody>
+					    <?php
+					    $no=1;
+					    foreach($dagangan as $row){
+					    ?>
+					        <tr>
+					            <td><?=$no;?></td>
+					            <td><?=$row->judul;?></td>
+					            <td><?=$row->kategori;?></td>
+					            <td><?=$row->pedagang;?></td>
+					            <td>
+					             <div class="btn-group">
+				                    <?=anchor(
+				                        'admin/detail_produkJasa/'.$row->ID.'/prefered_content',
+		                                'Detail',
+		                                'class="btn btn-primary btn-xs"'
+		                            )?>
+				                    <?=anchor(
+				                        'admin/edit_produkJasa/'.$row->ID.'/prefered_content',
+		                                'Edit',
+		                                'class="btn btn-default btn-xs"'
+		                            )?>
+				                    <?=anchor(
+				                        'admin/delete_produkJasa/'.$row->ID.'/prefered_content',
+		                                'Delete',
+		                                'class="btn btn-danger btn-xs"'
+		                            )?>
+					             </div>
+					            </td>
+					        </tr>
+					    </tbody>
+					    <?php
+					    $no++;
+					    }
+					    ?>
 					</table>
 				</div>
 			 </div>

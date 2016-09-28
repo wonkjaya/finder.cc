@@ -27,7 +27,11 @@ class Admin extends CI_Controller{
 			$total_user_new=$this->m->get_total_user_baru();
 			$total_visitor_new=0;
 			$total_page_views_today=100;
-			$data['total']=array('user'=>$total_user_new,'visitor'=>$total_visitor_new,'pageview'=>$total_page_views_today);
+			$data['total']=array(
+			    'user'=>$total_user_new,
+			    'visitor'=>$total_visitor_new,
+			    'pageview'=>$total_page_views_today
+			);
 		}
 		$this->load->view($this->theme . '/dashboard',$data);
 	}
@@ -64,8 +68,8 @@ class Admin extends CI_Controller{
 		$this->load->view($this->theme . '/form_produkJasa',$data);
 	}
 	
-	function hapus_proudkJasa($id){
-		$this->m->hapus_produkJasa($id);
+	function delete_proudkJasa($id){
+		$this->m->delete_produkJasa($id);
 	}
 
 // lokasi
