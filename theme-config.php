@@ -1,6 +1,6 @@
 <?php
 
-define('THEME','lumino');
+define('THEME','default');
 
 
 ?>
