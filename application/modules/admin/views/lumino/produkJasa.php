@@ -26,7 +26,7 @@
 		</div><!--/.row-->
 		
 		<div class="row">
-			<div class="col-md-10">
+			<div class="col-md-12">
 			 <div class="panel panel-primary">
 				<div class="panel-body">
 					<!--table data-toggle="table" 
