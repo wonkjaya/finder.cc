@@ -17,17 +17,17 @@
 		</div><!--end row head-->
 		<div class="row">
 <!--KONTEN AWAL-->
-<?php
-if(isset($lokasi)){
-	foreach($lokasi as $r){
-		$nama=$r->nama;
-		$alamat=$r->alamat;
-		$kota=$r->kota;
-		$deskripsi=$r->deskripsi;
-		$foto=$r->foto;
-	}
-}
-?>
+        <?php
+        if(isset($lokasi)){
+	        foreach($lokasi as $r){
+		        $nama=$r->nama;
+		        $alamat=$r->alamat;
+		        $kota=$r->kota;
+		        $deskripsi=$r->deskripsi;
+		        $foto=$r->foto;
+	        }
+        }
+        ?>
 		<?=form_open_multipart()?>
 			<div class="panel panel-default col-md-8">
 				<div class="panel-body">
