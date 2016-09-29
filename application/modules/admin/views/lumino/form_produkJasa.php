@@ -44,7 +44,7 @@
 			}
 		endif;
 		?>
-			<div class="panel panel-default col-md-7">
+			<div class="panel panel-default col-md-9">
 		      <?=form_open_multipart()?>
 				<div class="panel-body">
 						<div class="form-group">

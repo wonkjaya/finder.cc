@@ -68,7 +68,7 @@ class Admin extends CI_Controller{
 		$this->load->view($this->theme . '/form_produkJasa',$data);
 	}
 	
-	function delete_proudkJasa($id){
+	function delete_produkJasa($id){
 		$this->m->delete_produkJasa($id);
 	}
 
