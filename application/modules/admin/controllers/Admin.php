@@ -94,12 +94,6 @@ class Admin extends CI_Controller{
 		$this->m->hapus_lokasi($id);
 	}
 	
-	function kategori(){
-		$this->m->insert_kategori();
-		$data['kategori']=$this->m->get_kategori();
-		$this->load->view($this->theme . '/kategori',$data);
-	}
-	
 	function edit_lokasi($id=0){
 		$this->m->save_lokasi($id);
 		$data['lokasi']=$this->m->get_one_lokasi($id);
@@ -108,9 +102,19 @@ class Admin extends CI_Controller{
 		$this->load->view($this->theme . '/form_lokasi',$data);
 	}
 	
+// kategori
+	
+	function kategori(){
+		$this->m->insert_kategori();
+		$data['kategori']=$this->m->get_kategori();
+		$this->load->view($this->theme . '/kategori',$data);
+	}
+	
 	function delete_kategori($id=0){
 		$this->m->delete_kategori($id);
 	}
+
+// kontak
 	
 	function new_kontak(){
 		$this->m->new_kontak();
@@ -119,7 +123,20 @@ class Admin extends CI_Controller{
 	function delete_kontak($id=0){
 		$this->m->delete_kontak($id);
 	}
+
+// user
+
+	function users(){
+		$data['users']=$this->m->get_users();
+		$this->load->view($this->theme . '/users',$data);
+	}
 	
+	function new_user(){
+		$this->m->insert_user();
+		$this->load->helper(['form','myForm']);
+		$this->load->view($this->theme . '/form_user');
+	}	
+
 }
 
 //end of file

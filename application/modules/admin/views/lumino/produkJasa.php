@@ -19,16 +19,16 @@
 			</ol>
 		</div><!--/.row-->
 		
-		<div class="row">
-			<div class="col-lg-12">
-				<h1 class="page-header">Produk & Jasa</h1>
-			</div>
-		</div><!--/.row-->
-		
-		<div class="row">
+		<div class="row" style="margin-top:20px">
 			<div class="col-md-12">
 			 <div class="panel panel-primary">
 				<div class="panel-body">
+		
+					<div class="row" ng-controller="usercontroller">
+						<div class="col-lg-12">
+							<h2 class="page-header">Produk & Jasa</h2>
+						</div>
+					</div><!--/.row-->
 					<!--table data-toggle="table" 
                             data-url="<?=site_url('admin/allPosts')?>" 
                             data-show-columns="true"
@@ -55,7 +55,7 @@
 					            <th>Title</th>
 					            <th>Category</th>
 					            <th>Author</th>
-					            <th>*</th>
+					            <th>* <a href="<?=site_url('admin/new_post')?>" class="btn btn-primary btn-xs" style="float:right">New</a></th>
 					        </tr>
 					    </thead>
 					    <tbody>

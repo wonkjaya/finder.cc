@@ -1,6 +1,6 @@
 
 	<?php 
-	    $header=array('menu_aktif'=>4);
+	    $header=array('menu_aktif'=>2);
 	    include('templates/header.php'); 
     ?>		
 	<?php include('templates/sidebar.php'); ?>
@@ -15,7 +15,8 @@
 					</svg>
 				 </a>
 				</li>
-				<li class="active">Lokasi</li>
+				<li class="active">User</li>
+				<li class="active">Form</li>
 			</ol>
 		</div><!--/.row-->
 	
@@ -26,17 +27,21 @@
 					<div class="panel-body">
 						<div class="row">
 							<div class="col-md-12">
-								<h2 class="page-header">Input Lokasi</h2>
+								<h2 class="page-header">Form User</h2>
 							</div>
 						</div><!--/.row-->
 						<?php
-						if(isset($lokasi)){
-							foreach($lokasi as $r){
-							    $nama=$r->nama;
-							    $alamat=$r->alamat;
-							    $kota=$r->kota;
-							    $deskripsi=$r->deskripsi;
-							    $foto=$r->foto;
+						if(isset($user)){
+							foreach($user as $r){
+							    $ID=$r->ID;
+							    $email=$r->email;
+							    $level=$r->level;
+							    // detail
+							    $nama = $r->nama_lengkap;
+							    $alamat = $r->alamat;
+							    $jk = $r->jenis_kelamin;
+							    $nomor_telp = $r->nomor_telp;
+							    $photo = $r->profile_pic;
 							}
 						}
 						?>
@@ -54,37 +59,59 @@
 						</div>
 						<div class="col-md-12">
 							<div class="form-group">
-								<label for="exampleInputEmail1">Nama Tempat / Perusahaan</label>
-								<input type="text" name="lokasiNama" value="<?=(isset($nama)?$nama:'')?>"
+								<label for="exampleInputEmail1">Nomor KTP</label>
+								<input type="text" name="ktp" value="<?=(isset($ktp)?$ktp:'')?>"
 									   class="form-control" 
-									   placeholder="Masukkan Nama Tempat / Perusahaan">
+									   placeholder="Masukkan Nomor KTP Anda">
+							</div>
+							<div class="form-group">
+								<label for="exampleInputEmail1">Nama Lengkap</label>
+								<input type="text" name="nama" value="<?=(isset($nama)?$nama:'')?>"
+									   class="form-control" 
+									   placeholder="Masukkan Nama Lengkap">
 							</div>
 							<div class="form-group">
 								<label for="">Alamat</label>
-								<input type="text" name="lokasiAlamat" 
+								<input type="text" name="alamat" 
 									value="<?=(isset($alamat)?$alamat:'')?>" class="form-control"
 									placeholder="Alamat" value=""/>
 							</div>
-							<div class="form-group">
-								<label for="">Kota</label>
+						</div><!--col-md-12-->
+							<div class="col-md-6">
+								<label for="">Kelurahan</label>
 								<input type="text" class="form-control" 
-									   value="<?=(isset($kota)?$kota:'')?>" name="lokasiKota"
-									   placeholder="Masukkan Kota" value=""/>
+									   value="<?=(isset($kelurahan)?$kelurahan:'')?>" name="kelurahanId"
+									   placeholder="Masukkan Kelurahan" value=""/>
 							</div>
-						</div><!--col-md-8-->
-						<div class="col-md-12">
+							<div class="col-md-6">
+								<label for="">Level</label>
+								<?=form_dropdown_level()?>
+							</div>
+							<div class="col-md-12"><br/>
+								<label for="">Email</label>
+								<input type="email" required class="form-control" 
+									   value="<?=(isset($email)?$email:'')?>" name="kotaid"
+									   placeholder="email@exp.com" value=""/>
+							</div>
+							<div class="col-md-6"><br/>
+								<label for="">Password</label>
+								<input type="text" class="form-control" 
+										 name="password"
+										 placeholder="****" value=""/>
+							</div>
+							<div class="col-md-6"><br/>
+								<label for="">Konfirmasi</label>
+								<input type="text" class="form-control" 
+										 name="confPass"
+										 placeholder="****" value=""/>
+							</div>
+						<div class="col-md-12"><br/>
 							<div class="form-group">
-								<label for="exampleInputEmail1">Foto Tempat / Lokasi</label>
-								<input type="file" name="fotoLokasi" class="form-control fileUpload"/>
+								<label for="exampleInputEmail1">Foto Profil</label>
+								<input type="file" name="fotoProfile" class="form-control fileUpload"/>
 							</div>
 						</div><!--col-md-4-->
 						<div class="col-md-12">
-							<div class="form-group">
-								<label for="">Deskripsi</label>
-								<textarea name="lokasiDeskripsi" class="form-control"
-										  placeholder="Deskripsi" 
-										  style="width:100%;height:200px;resize:none"><?=(isset($deskripsi)?$deskripsi:'')?></textarea>
-							</div>
 							<button type="submit" class="btn btn-primary">
 								Simpan
 							</button>

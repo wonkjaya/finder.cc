@@ -1,8 +1,13 @@
 
+	<script src="<?=base_url('assets/bower-components/angular/angular.min.js')?>"></script>
 	<script src="<?=base_url('assets/jquery-components/js/jquery.min.js')?>"></script>
 	<script src="<?=base_url('assets/bootstrap-components/js/bootstrap.min.js')?>"></script>
 	<script src="<?=base_url('assets/bootstrap-components/js/bootstrap-datepicker.js')?>"></script>
 	<script src="<?=base_url('assets/bootstrap-components/js/bootstrap-table.js')?>"></script>
+	
+	<!--ANGULAR APP-->
+	<script src="<?=base_url('assets/angular-module/app.js')?>"></script>
+	<!--ANGULAR APP-->
 <?php
 if($header['menu_aktif'] == 1){
 ?>

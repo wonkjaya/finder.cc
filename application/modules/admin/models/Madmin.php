@@ -45,7 +45,11 @@ class Madmin extends CI_Model{
 		$this->db->select('data_pedagang.ID');
 		$this->db->join('data_pedagang','data_pedagang.id_user=users.ID','left');
 		$q=$this->db->get('users');
-		return isset($q->row()->ID)?$q->row()->ID:0;
+		if(isset($q->row()->ID)){
+		 return $q->row()->ID;
+		}else{
+			redirect('finder/login');
+		}
 	}
 	
 	function save_post($id){
@@ -308,7 +312,31 @@ class Madmin extends CI_Model{
 	    return $q->row()->total;
 	}
 	
+	function insert_user(){
+		if($_POST){
+		print_r($_POST);exit;
+			$email=$this->input->post('email');
+			$password=$this->input->post('password');
+			$confPassword=$this->input->post('confPassword');
+			$level=$this->input->post('ktp');
+			$level=$this->input->post('nama');
+			$level=$this->input->post('alamat');
+			$level=$this->input->post('kelurahanId');
+			if($password === $confPassword){
+				$data=['email'=>$email,'password'=>$password];
+				$this->db->insert('users',$data);
+			}
+		}
+	}
 	
+	function get_users(){
+		$this->db->select(['u.email as email','u.level as level','u.status',
+		'dp.*']);
+		//$this->db->where();
+		$this->db->join('data_pedagang dp','dp.id_user = u.ID','left');
+		$q=$this->db->get('users u');
+		if($q->num_rows() > 0 ) return $q->result();
+	}	
 
 }
 //end of file
