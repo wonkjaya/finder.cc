@@ -1,13 +1,23 @@
-
+<?php
+if(isset($loader['angucomplete']) || isset($loader['angular'])){
+?>
 	<script src="<?=base_url('assets/bower-components/angular/angular.min.js')?>"></script>
+	<script src="<?=base_url('assets/bower-components/angucomplete-alt/angucomplete-alt.js')?>"></script>
+  <script src="<?=base_url('assets/bower-components/angular-touch/angular-touch.min.js')?>"></script>
+	<!--ANGULAR APP-->
+	<script src="<?=base_url('assets/angular-module/app.js')?>"></script>
+	<!--ANGULAR APP-->
+<?php
+}
+?>
+	
 	<script src="<?=base_url('assets/jquery-components/js/jquery.min.js')?>"></script>
 	<script src="<?=base_url('assets/bootstrap-components/js/bootstrap.min.js')?>"></script>
 	<script src="<?=base_url('assets/bootstrap-components/js/bootstrap-datepicker.js')?>"></script>
 	<script src="<?=base_url('assets/bootstrap-components/js/bootstrap-table.js')?>"></script>
+	<script src="<?=base_url('assets/lumino/js/custom.js')?>"></script>
 	
-	<!--ANGULAR APP-->
-	<script src="<?=base_url('assets/angular-module/app.js')?>"></script>
-	<!--ANGULAR APP-->
+
 <?php
 if($header['menu_aktif'] == 1){
 ?>

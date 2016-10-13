@@ -314,17 +314,20 @@ class Madmin extends CI_Model{
 	
 	function insert_user(){
 		if($_POST){
-		print_r($_POST);exit;
+		//print_r($_POST);exit;
 			$email=$this->input->post('email');
 			$password=$this->input->post('password');
-			$confPassword=$this->input->post('confPassword');
-			$level=$this->input->post('ktp');
-			$level=$this->input->post('nama');
-			$level=$this->input->post('alamat');
-			$level=$this->input->post('kelurahanId');
+			$confPassword=$this->input->post('confPass');
+			$pedagang['identitas']=$this->input->post('ktp');
+			$pedagang['nama']=$this->input->post('nama');
+			$pedagang['alamat']=$this->input->post('alamat');
+			$pedagang['id_kelurahan']=$this->input->post('kelurahanId');
 			if($password === $confPassword){
-				$data=['email'=>$email,'password'=>$password];
-				$this->db->insert('users',$data);
+				$data=['email'=>$email,'password'=>md5($password)];
+				if($this->db->insert('users',$data)){
+					$pedagang['id_user']=$this->db->insert_id();
+					$this->db->insert('data_pedagang',$pedagang);
+				}
 			}
 		}
 	}
