@@ -43,7 +43,7 @@
 					if(isset($users))
 					 if($users !== false){
 						foreach($users as $r){
-							$id=$r->ID;
+							$id=$r->id_user;
 							//$nomor_identitas=$r->identitas;
 							$email = $r->email;
 							$nama_lengkap=$r->nama;
@@ -64,7 +64,7 @@
 								    '<i class="visible-xs glyphicon glyphicon-eye-open"></i>
 								    <span class="hidden-xs">Detail</span>',
 								    'class="btn btn-default btn-xs"')?>
-							    <?=anchor('admin/hapus_user/'.$id.'/prefered_content',
+							    <?=anchor('admin/delete_user/'.$id.'/prefered_content',
 								    '<i class="visible-xs glyphicon glyphicon-trash"></i>
 								    <span class="hidden-xs">Hapus</span>',
 								    'class="btn btn-danger btn-xs"')?>

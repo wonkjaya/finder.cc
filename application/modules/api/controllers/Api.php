@@ -17,6 +17,15 @@ class Api extends CI_Controller{
 					}
 					echo json_encode(["data"=>$object]);
 				}		
+		}elseif($type == 'findById'){
+			if(isset($_GET['q'])){
+					$res=$this->m->get_kelurahan_by_id($_GET['q']);
+					foreach($res as $r){
+						$name = ucwords($r->kelurahan .'-'. $r->kabupaten);
+						$object[]=["name"=>$name,"kelurahan"=>$r->kelurahan,"kecamatan"=>$r->kecamatan,"kabupaten"=>$r->kabupaten,"provinsi"=>$r->provinsi,"id"=>$r->id]; 
+					}
+					echo json_encode(["data"=>$object]);
+			}
 		}
 	}
 

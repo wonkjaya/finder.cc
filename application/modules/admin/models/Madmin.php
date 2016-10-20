@@ -1,5 +1,14 @@
 <?php
 class Madmin extends CI_Model{
+
+	function __construct(){
+		parent::__construct();
+	}
+	
+	function is_admin(){
+		$level=$this->session->userdata('--auth')['level'];
+		if($level == '00')return true;
+	}
 	
 	function load_kategori(){
 		$q=$this->db->get('kategori');
@@ -40,6 +49,7 @@ class Madmin extends CI_Model{
 	}
 	
 	function get_pedagang_id($email=''){
+	//print_r($this->session->userdata('--auth'));exit;
 		if(empty($email))$email=$this->session->userdata('--auth')['email'];
 		$this->db->where('users.email',$email);
 		$this->db->select('data_pedagang.ID');
@@ -48,7 +58,7 @@ class Madmin extends CI_Model{
 		if(isset($q->row()->ID)){
 		 return $q->row()->ID;
 		}else{
-			redirect('finder/login');
+			redirect('admin/logout');
 		}
 	}
 	
@@ -325,6 +335,7 @@ class Madmin extends CI_Model{
 			if($password === $confPassword){
 				$data=['email'=>$email,'password'=>md5($password)];
 				if($this->db->insert('users',$data)){
+					$pedagang['photo']= $this->upload_gambar(['path'=>'pedagang-images','inputName'=>'fotoProfile']);
 					$pedagang['id_user']=$this->db->insert_id();
 					$this->db->insert('data_pedagang',$pedagang);
 				}
@@ -340,6 +351,26 @@ class Madmin extends CI_Model{
 		$q=$this->db->get('users u');
 		if($q->num_rows() > 0 ) return $q->result();
 	}	
+	
+	function delete_user($id){
+		//hanya admin yang bisa menghapus
+		if($this->is_admin()){
+			$this->db->where('ID',$id);
+			$this->db->delete('users');
+		}
+			redirect("admin/users");
+	}
+	
+	function detail_user($id){
+		if($id > 0){
+			$this->db->where('u.ID',$id);
+			$this->db->limit(1);
+			$this->db->select(['u.email','u.level','dp.*']);
+			$this->db->join('data_pedagang dp','dp.id_user = u.ID','left');
+			$q=$this->db->get('users u');
+			return $q->result();
+		}
+	}
 
 }
 //end of file

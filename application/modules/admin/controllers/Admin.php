@@ -2,7 +2,6 @@
 
 class Admin extends CI_Controller{
 
-	var $theme;
 
 	function __construct(){
 		parent :: __construct();
@@ -13,6 +12,7 @@ class Admin extends CI_Controller{
 	
 	function logout(){
 		$this->session->sess_destroy();
+		//print_r($_SESSION);
 		redirect();
 	}
 	
@@ -136,6 +136,18 @@ class Admin extends CI_Controller{
 		$this->load->helper(['form','myForm']);
 		$this->load->view($this->theme . '/form_user');
 	}	
+	
+	function delete_user($id=''){
+		if($id){
+			$this->m->delete_user($id);
+		}
+	}
+	
+	function detail_user($id=0){
+		$data['userId']=$id;
+		$data['detail_user']=$this->m->detail_user($id);
+		$this->load->view($this->theme . '/detail_user',$data);
+	}
 
 }
 

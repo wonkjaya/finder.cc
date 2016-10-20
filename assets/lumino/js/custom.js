@@ -13,9 +13,9 @@ $("[name='fotoProfile']").change(function(){
 	readURL(this);
 });
 
-function submitFormAndGo(formName){
+/*function submitFormAndGo(formName){
 	var id=document.getElementById(formName);
 	id.submit(function(){
 		alert()
 	});
-}
+}*/

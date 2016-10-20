@@ -60,7 +60,7 @@
 						</div>
 						<div class="col-md-12">
 							<div class="form-group">
-								<label for="exampleInputEmail1">Nomor KTP</label>
+								<label for="exampleInputEmail1">ID Pengenal</label>
 								<input type="text" name="ktp" value="<?=(isset($ktp)?$ktp:'')?>" 
 										ng-model="accountKtp"
 									   class="form-control" 
@@ -96,8 +96,8 @@
 								      
 							</div>
 							<div class="col-md-6">
-								<label for="">Level</label>
-								<?=form_dropdown_level()?>
+								<label for="">Sebagai</label>
+								<?=form_dropdown_level(['ng-model'=>'accountLevel','ng-change'=>'changeValLevel(accountLevel)','required'=>''])?>
 							</div>
 							<div class="col-md-12"><br/>
 								<label for="">Email</label>
@@ -107,7 +107,7 @@
 							</div>
 							<div class="col-md-6"><br/>
 								<label for="">Password</label>
-								<input type="text" class="form-control" 
+								<input type="text" class="form-control" ng-model="accountPassword"
 										 name="password"
 										 placeholder="****" value="" required/>
 							</div>
@@ -115,7 +115,7 @@
 								<label for="">Konfirmasi</label>
 								<input type="text" class="form-control" 
 										 name="confPass"
-										 placeholder="****" value="" required/>
+										 placeholder="****" value="" required  ng-model="accountPasswordConf"/>
 							</div>
 						<div class="col-md-12"><br/>
 							<div class="form-group">
@@ -150,7 +150,7 @@
 									<th width="100px">Email</th><td>: {{accountEmail}}</td>
 								</tr>
 								<tr>
-									<th>No KTP</th><td>: {{accountKtp}}</td>
+									<th>ID Pengenal</th><td>: {{accountKtp}}</td>
 								</tr>
 								<tr>
 									<th>Nama</th><td>: {{accountName}}</td>
@@ -171,10 +171,10 @@
 									</td>
 								</tr>
 								<tr>
-									<th>Level</th><td>: {{accountLevel}}</td>
+									<th>Sebagai</th><td>: {{levelVal}}</td>
 								</tr>
 								<tr>
-									<td colspan="2"><button ng-show="valid" class="btn btn-primary" onclick="submitFormAndGo('form1')">Simpan & Lanjut</button></td>
+									<td colspan="2"><button class="btn btn-primary" ng-click="sendRegistration('form1')">Simpan & Lanjut</button></td>
 								</tr>
 								</table>
 							</div>	

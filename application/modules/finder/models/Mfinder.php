@@ -32,12 +32,15 @@ class Mfinder extends CI_Model{
 	function do_login(){
 		if($_POST){
 			$email=$this->input->post('email');
-			$this->db->select('ID');
+			$this->db->select(['ID','level']);
+			$this->db->limit(1);
 			$this->db->where(['email'=>$email,'password'=>md5($this->input->post('password'))]);
 			$q=$this->db->get('users');
 			$num=$q->num_rows();
-			if($num == 1){
-				$this->session->set_userdata('--auth',['email'=>$email]);
+			if($num > 0){
+				//echo 'asd';
+				$level=$q->row()->level;
+				$this->session->set_userdata('--auth',['email'=>$email,'level'=>$level]);
 				redirect('admin'); //login berhasil dan dfinder/iarahkan ke controller "admin"
 			}else{
 				$this->session->set_flashdata('error',true);
