@@ -67,9 +67,13 @@ if($_SERVER['HTTP_HOST'] == 'finder.malangsoftware.com'){ // Website
 	$password='silviaputrinanda123';
 	$dbs='rohmanah_pfinder_cc';
 }else{  //non website /Lokal
-	$username='root';    
-	$password='iTAYWGnJ';
-	$dbs='pfinder_cc';
+	/*
+	$username='pfinder';    
+	$password='root';
+	$dbs='pfinder_cc';*/
+	$username='root';
+	$password='';
+	$dbs='pfinder';
 }
 
 $db['default'] = array( // Konfigurasi Database menggunakan variabel diatas

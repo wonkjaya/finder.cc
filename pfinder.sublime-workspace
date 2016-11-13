@@ -1,0 +1,211 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"json",
+				"json_encode"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 92.0,
+		"last_filter": "install",
+		"selected_items":
+		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"insall",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/DATA/WEB/public-html/pfinder",
+		"/home/DATA/WEB/public-html/pfinder/modules",
+		"/home/DATA/WEB/public-html/pfinder/modules/admin",
+		"/home/DATA/WEB/public-html/pfinder/modules/admin/views/lumino",
+		"/home/DATA/WEB/public-html/pfinder/modules/admin/views/lumino/templates"
+	],
+	"file_history":
+	[
+		"/home/DATA/WEB/public-html/pfinder/modules/admin/jsmodules/admin-app.js",
+		"/home/DATA/WEB/public-html/pfinder/modules/admin/views/lumino/templates/footer.php",
+		"/home/DATA/WEB/public-html/pfinder/modules/admin/jsmodules/admin.js",
+		"/home/DATA/WEB/public-html/pfinder/modules/admin/controllers/Admin.php",
+		"/home/DATA/WEB/public-html/pfinder/modules/admin/views/lumino/objekLokasi.php",
+		"/home/DATA/WEB/public-html/pfinder/modules/admin/views/lumino/form_lokasi.php",
+		"/home/DATA/WEB/public-html/pfinder/modules/admin/views/lumino/kategori.php",
+		"/home/DATA/WEB/public-html/pfinder/modules/admin/views/lumino/produkJasa.php",
+		"/home/DATA/WEB/public-html/pfinder/modules/admin/views/lumino/form_produkJasa.php",
+		"/home/DATA/WEB/public-html/pfinder/modules/admin/views/lumino/form_user.php",
+		"/home/DATA/WEB/public-html/pfinder/modules/admin/views/lumino/dashboard.php",
+		"/home/DATA/WEB/public-html/pfinder/assets/angular-module/app.js",
+		"/home/DATA/WEB/public-html/pfinder/application/helpers/myform_helper.php",
+		"/home/DATA/WEB/public-html/pfinder/modules/admin/models/Madmin.php",
+		"/home/DATA/WEB/public-html/pfinder/application/config/routes.php",
+		"/home/DATA/WEB/public-html/pfinder/application/third_party/MX/Modules.php",
+		"/home/DATA/WEB/public-html/pfinder.cc/htdocs/application/config/config.php",
+		"/home/DATA/WEB/public-html/pfinder.cc/htdocs/application/config/database.php",
+		"/home/DATA/WEB/public-html/rest-api/api/.htaccess",
+		"/home/DATA/WEB/public-html/rest-api/api/index.php",
+		"/home/DATA/WEB/public-html/rest-api/config.php",
+		"/home/DATA/L-Software/Editor/sublime-text_build-3126_amd64.licence"
+	],
+	"find":
+	{
+		"height": 23.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"modules"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "pfinder.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 245.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

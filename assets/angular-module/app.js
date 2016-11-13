@@ -5,9 +5,6 @@ app.controller('detailUser',detailUser);
 
 userForm.$inject=['$scope','$http'];
 function userForm($scope,$http){
-	$scope.levelVal='';
-	$scope.accountEmail=false;
-	$scope.accountPass=false;
 	
 	$scope.changeValLevel=function(id){
 		$scope.levelVal=getLevelVal(id);
